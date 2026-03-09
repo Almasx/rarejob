@@ -6,10 +6,8 @@ import { getUserId } from "@/lib/userId"
 import { StreakCalendar } from "@/components/streak-calendar"
 import { LessonCard } from "@/components/lesson-card"
 import { WeakPointRow } from "@/components/weak-point-row"
-import { useMemo } from "react"
-
 export default function Home() {
-  const userId = useMemo(() => getUserId(), [])
+  const userId = getUserId()
   const lessons = useQuery(api.lessons.list, { level: 3, chapter: 1 })
   const dashboard = useQuery(api.progress.getDashboard, userId ? { userId } : "skip")
 

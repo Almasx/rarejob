@@ -12,51 +12,58 @@ import { shuffleArray } from "@/lib/utils"
 import { useMutation, useQuery } from "convex/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useParams, useRouter } from "next/navigation"
-import { useCallback, useMemo, useReducer, useRef } from "react"
+import { useCallback, useMemo, useReducer } from "react"
 import useMeasure from "react-use-measure"
 
 type State = {
   currentIndex: number
   answers: AnswerResult[]
+  submitted: boolean
 }
 
-type Action = { type: "ANSWER"; result: AnswerResult }
+type Action =
+  | { type: "ANSWER"; result: AnswerResult }
+  | { type: "SUBMITTED" }
 
 function reducer(state: State, action: Action): State {
-  return {
-    currentIndex: state.currentIndex + 1,
-    answers: [...state.answers, action.result],
+  switch (action.type) {
+    case "ANSWER":
+      return {
+        ...state,
+        currentIndex: state.currentIndex + 1,
+        answers: [...state.answers, action.result],
+      }
+    case "SUBMITTED":
+      return { ...state, submitted: true }
   }
 }
 
-function mapAnswersForMutation(answers: AnswerResult[]) {
-  return answers.map((a) => {
-    if (a.exercise.type === "flashcard") {
-      return {
-        exerciseType: "flashcard" as const,
-        question: a.exercise.data.front,
-        correctAnswer: a.exercise.data.back,
-        userAnswer: a.userAnswer,
-        correct: a.correct,
-      }
-    }
-    if (a.exercise.type === "translate") {
-      return {
-        exerciseType: "translate" as const,
-        question: a.exercise.data.sentenceJp,
-        correctAnswer: a.exercise.data.correct,
-        userAnswer: a.userAnswer,
-        correct: a.correct,
-      }
-    }
+function mapAnswerForMutation(a: AnswerResult) {
+  if (a.exercise.type === "flashcard") {
     return {
-      exerciseType: "fill-blank" as const,
-      question: a.exercise.data.sentence,
-      correctAnswer: a.exercise.data.blank,
+      exerciseType: "flashcard" as const,
+      question: a.exercise.data.front,
+      correctAnswer: a.exercise.data.back,
       userAnswer: a.userAnswer,
       correct: a.correct,
     }
-  })
+  }
+  if (a.exercise.type === "translate") {
+    return {
+      exerciseType: "translate" as const,
+      question: a.exercise.data.sentenceJp,
+      correctAnswer: a.exercise.data.correct,
+      userAnswer: a.userAnswer,
+      correct: a.correct,
+    }
+  }
+  return {
+    exerciseType: "fill-blank" as const,
+    question: a.exercise.data.sentence,
+    correctAnswer: a.exercise.data.blank,
+    userAnswer: a.userAnswer,
+    correct: a.correct,
+  }
 }
 
 const springGentle = { type: "spring" as const, duration: 0.4, bounce: 0 }
@@ -65,8 +72,7 @@ export default function ExercisePage() {
   const params = useParams()
   const router = useRouter()
   const lessonId = params.lessonId as string
-  const userId = useMemo(() => getUserId(), [])
-  const submittedRef = useRef(false)
+  const userId = getUserId()
 
   const lesson = useQuery(api.lessons.getByKey, { lessonKey: lessonId })
   const completeSession = useMutation(api.sessions.complete)
@@ -82,28 +88,25 @@ export default function ExercisePage() {
   }, [lesson])
 
   const [measureRef, bounds] = useMeasure()
-  const [state, dispatch] = useReducer(reducer, { currentIndex: 0, answers: [] })
+  const [state, dispatch] = useReducer(reducer, { currentIndex: 0, answers: [], submitted: false })
 
   const handleAnswer = useCallback(
     (exercise: Exercise, correct: boolean, userAnswer: string) => {
-      const result: AnswerResult = { exercise, correct, userAnswer }
-      dispatch({ type: "ANSWER", result })
-
-      // Submit when this was the last exercise
-      const newAnswers = [...state.answers, result]
-      if (newAnswers.length >= exercises.length && !submittedRef.current) {
-        submittedRef.current = true
-        completeSession({
-          userId,
-          lessonKey: lessonId,
-          answers: mapAnswersForMutation(newAnswers),
-        })
-      }
+      dispatch({ type: "ANSWER", result: { exercise, correct, userAnswer } })
     },
-    [state.answers, exercises.length, completeSession, userId, lessonId]
+    []
   )
 
+  // Submit once when all answers are in, derived from state
   const done = state.currentIndex >= exercises.length && exercises.length > 0
+  if (done && !state.submitted) {
+    dispatch({ type: "SUBMITTED" })
+    completeSession({
+      userId,
+      lessonKey: lessonId,
+      answers: state.answers.map(mapAnswerForMutation),
+    })
+  }
 
   if (lesson === undefined) {
     return (
