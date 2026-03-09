@@ -1,4 +1,8 @@
-import { WeakPoint } from "@/lib/types"
+import { FunctionReturnType } from "convex/server"
+import { api } from "@/convex/_generated/api"
+
+type Dashboard = FunctionReturnType<typeof api.progress.getDashboard>
+type WeakPoint = Dashboard["weakPoints"][number]
 
 type WeakPointRowProps = {
   weakPoint: WeakPoint

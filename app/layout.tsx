@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
-import { ProgressProvider } from "@/lib/progress-context";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -23,9 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${instrumentSans.variable} antialiased`}>
         <div className="mx-auto max-w-[430px] min-h-dvh">
-          <ProgressProvider>
+          <ConvexClientProvider>
             {children}
-          </ProgressProvider>
+          </ConvexClientProvider>
         </div>
       </body>
     </html>

@@ -1,18 +1,18 @@
 "use client"
 
-import { Button } from "@/components/button"
 import { FillBlank } from "@/components/fill-blank"
 import { Flashcard } from "@/components/flashcard"
 import { ScoreBar } from "@/components/score-bar"
+import { SessionResult } from "@/components/session-result"
 import { TranslateQuiz } from "@/components/translate-quiz"
-import { WeakPointRow } from "@/components/weak-point-row"
-import { lessons } from "@/lib/data"
-import { useProgress } from "@/lib/progress-context"
-import { AnswerResult, Exercise, WeakPoint } from "@/lib/types"
-import { cn, shuffleArray } from "@/lib/utils"
+import { api } from "@/convex/_generated/api"
+import { getUserId } from "@/lib/userId"
+import { Exercise, AnswerResult, Flashcard as FlashcardType, TranslateItem, FillBlankItem } from "@/lib/types"
+import { shuffleArray } from "@/lib/utils"
+import { useMutation, useQuery } from "convex/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useParams, useRouter } from "next/navigation"
-import { useCallback, useEffect, useMemo, useReducer, useRef } from "react"
+import { useCallback, useMemo, useReducer, useRef } from "react"
 import useMeasure from "react-use-measure"
 
 type State = {
@@ -29,17 +29,34 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-function buildExercises(lessonId: string): Exercise[] {
-  const lesson = lessons.find((l) => l.id === lessonId)
-  if (!lesson) return []
-
-  const exercises: Exercise[] = [
-    ...lesson.practice.flashcards.map((f) => ({ type: "flashcard" as const, data: f })),
-    ...lesson.practice.translate.map((t) => ({ type: "translate" as const, data: t })),
-    ...lesson.practice.fillBlank.map((fb) => ({ type: "fill-blank" as const, data: fb })),
-  ]
-
-  return shuffleArray(exercises).slice(0, 10)
+function mapAnswersForMutation(answers: AnswerResult[]) {
+  return answers.map((a) => {
+    if (a.exercise.type === "flashcard") {
+      return {
+        exerciseType: "flashcard" as const,
+        question: a.exercise.data.front,
+        correctAnswer: a.exercise.data.back,
+        userAnswer: a.userAnswer,
+        correct: a.correct,
+      }
+    }
+    if (a.exercise.type === "translate") {
+      return {
+        exerciseType: "translate" as const,
+        question: a.exercise.data.sentenceJp,
+        correctAnswer: a.exercise.data.correct,
+        userAnswer: a.userAnswer,
+        correct: a.correct,
+      }
+    }
+    return {
+      exerciseType: "fill-blank" as const,
+      question: a.exercise.data.sentence,
+      correctAnswer: a.exercise.data.blank,
+      userAnswer: a.userAnswer,
+      correct: a.correct,
+    }
+  })
 }
 
 const springGentle = { type: "spring" as const, duration: 0.4, bounce: 0 }
@@ -47,45 +64,54 @@ const springGentle = { type: "spring" as const, duration: 0.4, bounce: 0 }
 export default function ExercisePage() {
   const params = useParams()
   const router = useRouter()
-  const { completeSession } = useProgress()
   const lessonId = params.lessonId as string
-  const savedRef = useRef(false)
+  const userId = useMemo(() => getUserId(), [])
+  const submittedRef = useRef(false)
 
-  const exercises = useMemo(() => buildExercises(lessonId), [lessonId])
+  const lesson = useQuery(api.lessons.getByKey, { lessonKey: lessonId })
+  const completeSession = useMutation(api.sessions.complete)
+
+  const exercises = useMemo(() => {
+    if (!lesson) return []
+    const all: Exercise[] = [
+      ...lesson.flashcards.map((f) => ({ type: "flashcard" as const, data: f as FlashcardType })),
+      ...lesson.translate.map((t) => ({ type: "translate" as const, data: t as TranslateItem })),
+      ...lesson.fillBlank.map((fb) => ({ type: "fill-blank" as const, data: fb as FillBlankItem })),
+    ]
+    return shuffleArray(all).slice(0, 10)
+  }, [lesson])
+
   const [measureRef, bounds] = useMeasure()
-
-  const [state, dispatch] = useReducer(reducer, {
-    currentIndex: 0,
-    answers: [],
-  })
+  const [state, dispatch] = useReducer(reducer, { currentIndex: 0, answers: [] })
 
   const handleAnswer = useCallback(
     (exercise: Exercise, correct: boolean, userAnswer: string) => {
-      dispatch({ type: "ANSWER", result: { exercise, correct, userAnswer } })
+      const result: AnswerResult = { exercise, correct, userAnswer }
+      dispatch({ type: "ANSWER", result })
+
+      // Submit when this was the last exercise
+      const newAnswers = [...state.answers, result]
+      if (newAnswers.length >= exercises.length && !submittedRef.current) {
+        submittedRef.current = true
+        completeSession({
+          userId,
+          lessonKey: lessonId,
+          answers: mapAnswersForMutation(newAnswers),
+        })
+      }
     },
-    []
+    [state.answers, exercises.length, completeSession, userId, lessonId]
   )
 
-  const lesson = lessons.find((l) => l.id === lessonId)
   const done = state.currentIndex >= exercises.length && exercises.length > 0
 
-  useEffect(() => {
-    if (done && !savedRef.current) {
-      savedRef.current = true
-      const weakPoints: WeakPoint[] = state.answers
-        .filter((a) => !a.correct)
-        .map((a) => {
-          if (a.exercise.type === "flashcard") {
-            return { term: a.exercise.data.front, translation: a.exercise.data.back, wrongCount: 1 }
-          }
-          if (a.exercise.type === "translate") {
-            return { term: a.exercise.data.sentenceJp, translation: a.exercise.data.correct, wrongCount: 1 }
-          }
-          return { term: a.exercise.data.blank, translation: a.exercise.data.sentence, wrongCount: 1 }
-        })
-      completeSession(lessonId, weakPoints)
-    }
-  }, [done, state.answers, completeSession, lessonId])
+  if (lesson === undefined) {
+    return (
+      <div className="px-5 pt-14 text-center">
+        <div className="card-raised p-6 animate-pulse h-[300px]" />
+      </div>
+    )
+  }
 
   if (!lesson || exercises.length === 0) {
     return (
@@ -95,65 +121,10 @@ export default function ExercisePage() {
     )
   }
 
-  // Result screen
   if (done) {
-    const correctCount = state.answers.filter((a) => a.correct).length
-    const pct = Math.round((correctCount / exercises.length) * 100)
-    const weakPoints = state.answers
-      .filter((a) => !a.correct)
-      .map((a) => {
-        if (a.exercise.type === "flashcard") {
-          return { term: a.exercise.data.front, translation: a.exercise.data.back, wrongCount: 1 }
-        }
-        if (a.exercise.type === "translate") {
-          return { term: a.exercise.data.sentenceJp, translation: a.exercise.data.correct, wrongCount: 1 }
-        }
-        return { term: a.exercise.data.blank, translation: a.exercise.data.sentence, wrongCount: 1 }
-      })
-
-    return (
-      <motion.div
-        className="px-5 pt-14 pb-10 flex flex-col gap-3"
-        initial={{ opacity: 0, filter: "blur(8px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        transition={springGentle}
-      >
-        <div className="card-raised p-6 pb-6">
-          <h2>
-            {pct >= 80 ? "Nice work" : pct >= 50 ? "Getting there" : "Keep practicing"}
-          </h2>
-          <p className="text-text-secondary text-base mt-1 mb-6">
-            {correctCount} of {exercises.length} correct &middot; {lesson.title}
-          </p>
-          <div className="flex gap-1">
-            {state.answers.map((a, i) => (
-              <div
-                key={i}
-                className={cn("flex-1 h-2 rounded-full", a.correct ? "bg-accent" : "bg-border")}
-              />
-            ))}
-          </div>
-        </div>
-
-        {weakPoints.length > 0 && (
-          <div className="card-raised px-5 pt-5 pb-2">
-            <h3 className="mb-1">Review these</h3>
-            <div className="divide-y divide-border">
-              {weakPoints.map((wp, i) => (
-                <WeakPointRow key={i} weakPoint={wp} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        <Button className="w-full" onClick={() => router.push("/")}>
-          Done
-        </Button>
-      </motion.div>
-    )
+    return <SessionResult answers={state.answers} lessonTitle={lesson.title} />
   }
 
-  // Exercise screen
   const current = exercises[state.currentIndex]
 
   return (

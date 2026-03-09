@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "auth-setup": {
+      "source": "get-convex/convex-agent-plugins",
+      "sourceType": "github",
+      "computedHash": "e530b99bb501a04d1562755fb6166f18aa356330d2ff7b7e6195283cfe84ef99"
+    },
+    "convex-helpers-guide": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "89628c969f2352f45c2e7dde8dda98fb038d8519e4383516eac4d7c1773c5a16"
+    },
+    "convex-quickstart": {
+      "source": "get-convex/convex-agent-plugins",
+      "sourceType": "github",
+      "computedHash": "d9cd80ffb9eb156719b75160726449ea7118db67c160aecdf4036d89f86887d1"
+    },
+    "function-creator": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "126481f6ca204f2762d9b5fb9b238f4f2f10cd03e6124605728043578a10b22a"
+    },
+    "schema-builder": {
+      "source": "get-convex/agent-skills",
+      "sourceType": "github",
+      "computedHash": "2a587f944ae744b17ef724c66a661835e7e04b0f2dc4ca428c87f88854e7500c"
+    }
+  }
+}

@@ -1,11 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import { Lesson } from "@/lib/types"
 import { Button } from "./button"
+import { FunctionReturnType } from "convex/server"
+import { api } from "@/convex/_generated/api"
+
+type LessonSummary = FunctionReturnType<typeof api.lessons.list>[number]
 
 type LessonCardProps = {
-  lesson: Lesson
+  lesson: LessonSummary
   completed: boolean
 }
 
@@ -20,7 +23,7 @@ export function LessonCard({ lesson, completed }: LessonCardProps) {
     <div className="card-raised p-6">
       <div className="mb-3">
         <span className="text-caption text-text-tertiary font-medium tracking-wide uppercase">
-          Lesson {lesson.number} &middot; {typeLabel[lesson.lessonType]}
+          Lesson {lesson.lessonNumber} &middot; {typeLabel[lesson.lessonType]}
         </span>
       </div>
 
@@ -28,7 +31,7 @@ export function LessonCard({ lesson, completed }: LessonCardProps) {
       <p className="text-text-tertiary text-caption mb-2">{lesson.titleJp}</p>
       <p className="text-text-secondary text-base mb-6 leading-relaxed">{lesson.goal}</p>
 
-      <Link href={`/exercise/${lesson.id}`}>
+      <Link href={`/exercise/${lesson.lessonKey}`}>
         <Button className="w-full">{completed ? "Practice Again" : "Start"}</Button>
       </Link>
     </div>
