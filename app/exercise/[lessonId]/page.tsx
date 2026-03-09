@@ -122,7 +122,7 @@ export default function ExercisePage() {
           <h2>
             {pct >= 80 ? "Nice work" : pct >= 50 ? "Getting there" : "Keep practicing"}
           </h2>
-          <p className="text-text-tertiary text-[15px] mt-1 mb-6">
+          <p className="text-text-secondary text-base mt-1 mb-6">
             {correctCount} of {exercises.length} correct &middot; {lesson.title}
           </p>
           <div className="flex gap-1">
@@ -136,7 +136,7 @@ export default function ExercisePage() {
         </div>
 
         {weakPoints.length > 0 && (
-          <div className="card-raised p-5">
+          <div className="card-raised px-5 pt-5 pb-2">
             <h3 className="mb-1">Review these</h3>
             <div className="divide-y divide-border">
               {weakPoints.map((wp, i) => (
@@ -161,7 +161,7 @@ export default function ExercisePage() {
       <div className="flex items-center gap-4">
         <button
           onClick={() => router.push("/")}
-          className="text-text-tertiary text-[15px] font-medium active:opacity-60 transition-opacity"
+          className="text-text-secondary text-base font-medium active:opacity-60 transition-opacity"
         >
           Cancel
         </button>

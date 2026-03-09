@@ -24,7 +24,7 @@ export default function Home() {
       />
 
       {sortedWeak.length > 0 && (
-        <div className="card-raised p-5">
+        <div className="card-raised px-5 pt-5 pb-2">
           <h3 className="mb-1">Review these</h3>
           <div className="divide-y divide-border">
             {sortedWeak.slice(0, 5).map((wp, i) => (

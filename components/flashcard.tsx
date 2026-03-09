@@ -46,7 +46,7 @@ export function Flashcard({ data, onRate }: FlashcardProps) {
             </span>
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
-                <p className="text-text-tertiary text-[15px] mb-3">{data.front}</p>
+                <p className="text-text-tertiary text-base mb-3">{data.front}</p>
                 <p className="text-[22px] font-semibold leading-relaxed">{data.back}</p>
               </div>
             </div>
@@ -55,19 +55,19 @@ export function Flashcard({ data, onRate }: FlashcardProps) {
           <div className="mx-6 border-t border-border">
             <button
               onClick={() => onRate("again")}
-              className="w-full text-left px-0 py-4 text-text-tertiary font-medium text-[15px] border-b border-border active:opacity-60 transition-opacity"
+              className="w-full text-left px-0 py-4 text-text-tertiary font-semibold text-base border-b border-border active:opacity-60 transition-opacity"
             >
               Again
             </button>
             <button
               onClick={() => onRate("good")}
-              className="w-full text-left px-0 py-4 text-text-primary font-medium text-[15px] border-b border-border active:opacity-60 transition-opacity"
+              className="w-full text-left px-0 py-4 text-text-primary font-semibold text-base border-b border-border active:opacity-60 transition-opacity"
             >
               Good
             </button>
             <button
               onClick={() => onRate("easy")}
-              className="w-full text-left px-0 py-4 text-accent font-medium text-[15px] active:opacity-60 transition-opacity"
+              className="w-full text-left px-0 py-4 text-accent font-semibold text-base active:opacity-60 transition-opacity"
             >
               Easy
             </button>

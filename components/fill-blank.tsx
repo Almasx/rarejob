@@ -63,19 +63,16 @@ export function FillBlank({ data, onAnswer }: FillBlankProps) {
               key={option}
               onClick={() => handleSelect(option)}
               className={cn(
-                "w-full text-left px-0 py-4.5 text-[15px] flex gap-3 items-baseline transition-all outline-none",
+                "w-full text-left px-0 py-4.5 text-base flex gap-3 items-baseline transition-all outline-none text-text-primary",
                 !isLast && "border-b border-border",
                 !showResult && "active:opacity-60",
-                showResult && isCorrect && "text-accent",
-                showResult && isSelected && !isCorrect && "text-wrong",
-                showResult && !isSelected && !isCorrect && "text-text-tertiary"
+                showResult && isCorrect && "!text-accent",
+                showResult && isSelected && !isCorrect && "!text-wrong",
+                showResult && !isSelected && !isCorrect && "!text-text-tertiary"
               )}
               whileTap={!selected ? { scale: 0.99 } : undefined}
             >
-              <span className={cn(
-                "text-text-tertiary text-caption font-medium w-4",
-                showResult && isCorrect && "text-accent",
-              )}>
+              <span className="text-caption font-medium w-4 text-inherit">
                 {letters[i]}
               </span>
               <span>{option}</span>
