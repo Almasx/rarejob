@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
+import { ProgressProvider } from "@/lib/progress-context";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -10,7 +11,7 @@ const instrumentSans = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: "RareJob Practices",
-  description: "AI-powered personalized English lessons for Japanese learners",
+  description: "Daily English exercise companion for Jitsuyo-Eikaiwa students",
 };
 
 export default function RootLayout({
@@ -20,10 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${instrumentSans.variable} antialiased`}
-      >
-        {children}
+      <body className={`${instrumentSans.variable} antialiased`}>
+        <div className="mx-auto max-w-[430px] min-h-dvh">
+          <ProgressProvider>
+            {children}
+          </ProgressProvider>
+        </div>
       </body>
     </html>
   );

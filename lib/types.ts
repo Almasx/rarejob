@@ -1,53 +1,90 @@
-export type UserProfile = {
-  name: string;
-  level: 'beginner' | 'high-beginner' | 'intermediate' | 'high-intermediate';
-  interests: string[];
-  nativeLanguage: string;
-};
+export type LessonType = "LISTENING" | "SPEAKING" | "REVIEW"
 
-export type VocabRow = {
-  word: string;
-  pronunciation: string;
-  meaning: string;
-  example: string;
-};
+export type Vocabulary = {
+  word: string
+  wordJp: string
+  pronunciation: string
+  exampleEn: string
+  exampleJp: string
+}
 
-export type GrammarRow = {
-  tense: string;
-  structure: string;
-  useCase: string;
-  example: string;
-};
+export type GrammarTip = {
+  ruleEn: string
+  ruleJp: string
+  examples: { en: string; jp: string }[]
+}
 
 export type DialogueLine = {
-  speaker: string;
-  text: string;
-};
+  speaker: string
+  lineEn: string
+  lineJp: string
+}
 
-export type ContentBlock =
-  | { type: 'heading'; text: string }
-  | { type: 'explanation'; html: string }
-  | { type: 'vocabulary_table'; words: VocabRow[] }
-  | { type: 'grammar_table'; rules: GrammarRow[] }
-  | { type: 'dialogue'; lines: DialogueLine[] }
-  | { type: 'quiz_mcq'; question: string; options: string[]; correctIndex: number; explanation: string }
-  | { type: 'quiz_fill_blank'; sentence: string; blank: string; answer: string }
-  | { type: 'tip'; text: string }
-  | { type: 'cultural_note'; text: string }
-  | { type: 'practice_prompt'; text: string };
+export type Flashcard = {
+  front: string
+  back: string
+  type: "en-to-jp" | "jp-to-en"
+}
 
-export type Chapter = {
-  id: string;
-  title: string;
-  icon: string;
-  blocks: ContentBlock[];
-};
+export type TranslateItem = {
+  sentenceJp: string
+  correct: string
+  wrong: string[]
+}
 
-export type Course = {
-  id: string;
-  title: string;
-  description: string;
-  coverEmoji: string;
-  level: string;
-  chapters: Chapter[];
-};
+export type FillBlankItem = {
+  sentence: string
+  blank: string
+  options: string[]
+}
+
+export type Lesson = {
+  id: string
+  number: number
+  title: string
+  titleJp: string
+  goal: string
+  goalJp: string
+  lessonType: LessonType
+  present: {
+    vocabulary: Vocabulary[]
+    grammarTip: GrammarTip
+  }
+  comprehend: {
+    context: string
+    contextJp: string
+    dialogue: DialogueLine[]
+  }
+  practice: {
+    flashcards: Flashcard[]
+    translate: TranslateItem[]
+    fillBlank: FillBlankItem[]
+  }
+}
+
+export type ExerciseType = "flashcard" | "translate" | "fill-blank"
+
+export type Exercise =
+  | { type: "flashcard"; data: Flashcard }
+  | { type: "translate"; data: TranslateItem }
+  | { type: "fill-blank"; data: FillBlankItem }
+
+export type AnswerResult = {
+  exercise: Exercise
+  correct: boolean
+  userAnswer: string
+}
+
+export type UserProgress = {
+  streak: number
+  lastPracticeDate: string | null
+  completedLessons: string[]
+  weakPoints: WeakPoint[]
+  practiceHistory: Record<string, boolean> // date -> practiced
+}
+
+export type WeakPoint = {
+  term: string
+  translation: string
+  wrongCount: number
+}
