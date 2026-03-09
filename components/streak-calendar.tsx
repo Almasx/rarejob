@@ -1,6 +1,6 @@
 "use client"
 
-import { formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 
 type StreakCalendarProps = {
   practiceHistory: Record<string, boolean>
@@ -38,26 +38,21 @@ export function StreakCalendar({ practiceHistory, streak }: StreakCalendarProps)
       </div>
 
       <div
-        className="gap-[4px]"
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${weeks}, 1fr)`,
-          gridTemplateRows: "repeat(7, 1fr)",
-        }}
+        className="grid grid-rows-[repeat(7,1fr)] gap-1"
+        style={{ gridTemplateColumns: `repeat(${weeks}, 1fr)` }}
       >
         {days.map((day) => (
           <div
             key={day.date}
             title={day.date}
-            className="rounded-[5px] aspect-square transition-colors"
-            style={{
-              backgroundColor: day.practiced
-                ? "var(--accent)"
+            className={cn(
+              "rounded-md aspect-square transition-colors min-w-0",
+              day.practiced
+                ? "bg-accent"
                 : day.isToday
-                  ? "var(--accent-soft)"
-                  : "var(--fill-empty)",
-              minWidth: 0,
-            }}
+                  ? "bg-accent-soft"
+                  : "bg-fill-empty"
+            )}
           />
         ))}
       </div>

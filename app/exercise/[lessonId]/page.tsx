@@ -9,7 +9,7 @@ import { WeakPointRow } from "@/components/weak-point-row"
 import { lessons } from "@/lib/data"
 import { useProgress } from "@/lib/progress-context"
 import { AnswerResult, Exercise, WeakPoint } from "@/lib/types"
-import { shuffleArray } from "@/lib/utils"
+import { cn, shuffleArray } from "@/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
 import { useParams, useRouter } from "next/navigation"
 import { useCallback, useEffect, useMemo, useReducer, useRef } from "react"
@@ -125,11 +125,11 @@ export default function ExercisePage() {
           <p className="text-text-tertiary text-[15px] mt-1 mb-6">
             {correctCount} of {exercises.length} correct &middot; {lesson.title}
           </p>
-          <div className="flex gap-[3px]">
+          <div className="flex gap-1">
             {state.answers.map((a, i) => (
               <div
                 key={i}
-                className={`flex-1 h-[8px] rounded-full ${a.correct ? "bg-accent" : "bg-border"}`}
+                className={cn("flex-1 h-2 rounded-full", a.correct ? "bg-accent" : "bg-border")}
               />
             ))}
           </div>

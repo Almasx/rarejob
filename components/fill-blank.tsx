@@ -23,7 +23,8 @@ export function FillBlank({ data, onAnswer }: FillBlankProps) {
   const handleSelect = (choice: string) => {
     if (selected) return
     setSelected(choice)
-    setTimeout(() => onAnswer(choice === data.blank), 800)
+    const correct = choice === data.blank
+    setTimeout(() => onAnswer(correct), correct ? 2000 : 4000)
   }
 
   const parts = data.sentence.split("___")
@@ -62,12 +63,12 @@ export function FillBlank({ data, onAnswer }: FillBlankProps) {
               key={option}
               onClick={() => handleSelect(option)}
               className={cn(
-                "w-full text-left px-0 py-4.5 text-[15px] flex gap-3 items-baseline transition-all",
+                "w-full text-left px-0 py-4.5 text-[15px] flex gap-3 items-baseline transition-all outline-none",
                 !isLast && "border-b border-border",
                 !showResult && "active:opacity-60",
                 showResult && isCorrect && "text-accent",
                 showResult && isSelected && !isCorrect && "text-wrong",
-                showResult && !isSelected && !isCorrect && "opacity-30"
+                showResult && !isSelected && !isCorrect && "text-text-tertiary"
               )}
               whileTap={!selected ? { scale: 0.99 } : undefined}
             >

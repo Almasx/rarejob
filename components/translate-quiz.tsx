@@ -23,7 +23,8 @@ export function TranslateQuiz({ data, onAnswer }: TranslateQuizProps) {
   const handleSelect = (choice: string) => {
     if (selected) return
     setSelected(choice)
-    setTimeout(() => onAnswer(choice === data.correct), 800)
+    const correct = choice === data.correct
+    setTimeout(() => onAnswer(correct), correct ? 2000 : 4000)
   }
 
   return (
@@ -45,12 +46,12 @@ export function TranslateQuiz({ data, onAnswer }: TranslateQuizProps) {
               key={choice}
               onClick={() => handleSelect(choice)}
               className={cn(
-                "w-full text-left px-0 py-4.5 text-[15px] flex gap-3 items-baseline transition-all",
+                "w-full text-left px-0 py-4.5 text-[15px] flex gap-3 items-baseline transition-all outline-none",
                 !isLast && "border-b border-border",
                 !showResult && "active:opacity-60",
                 showResult && isCorrect && "text-accent",
                 showResult && isSelected && !isCorrect && "text-wrong",
-                showResult && !isSelected && !isCorrect && "opacity-30"
+                showResult && !isSelected && !isCorrect && "text-text-tertiary"
               )}
               whileTap={!selected ? { scale: 0.99 } : undefined}
             >
