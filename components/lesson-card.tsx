@@ -29,7 +29,7 @@ export function LessonCard({ lesson, completed }: LessonCardProps) {
 
       <h2 className="mb-1">{lesson.title}</h2>
       <p className="text-text-tertiary text-caption mb-2">{lesson.titleJp}</p>
-      <p className="text-text-secondary text-[15px] mb-5 leading-relaxed">{lesson.goal}</p>
+      <p className="text-text-secondary text-[15px] mb-6 leading-relaxed">{lesson.goal}</p>
 
       <Link href={`/exercise/${lesson.id}`}>
         <Button className="w-full">{completed ? "Practice Again" : "Start"}</Button>
