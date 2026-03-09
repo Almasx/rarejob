@@ -17,21 +17,14 @@ import { Button } from "@/components/button"
 type State = {
   currentIndex: number
   answers: AnswerResult[]
-  finished: boolean
 }
 
-type Action =
-  | { type: "ANSWER"; result: AnswerResult }
-  | { type: "FINISH" }
+type Action = { type: "ANSWER"; result: AnswerResult }
 
 function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case "ANSWER":
-      return { ...state, currentIndex: state.currentIndex + 1, answers: [...state.answers, action.result] }
-    case "FINISH":
-      return { ...state, finished: true }
-    default:
-      return state
+  return {
+    currentIndex: state.currentIndex + 1,
+    answers: [...state.answers, action.result],
   }
 }
 
@@ -60,7 +53,6 @@ export default function ExercisePage() {
   const [state, dispatch] = useReducer(reducer, {
     currentIndex: 0,
     answers: [],
-    finished: false,
   })
 
   const handleAnswer = useCallback(
@@ -71,8 +63,6 @@ export default function ExercisePage() {
   )
 
   const lesson = lessons.find((l) => l.id === lessonId)
-
-  // Session complete — show result inline
   const done = state.currentIndex >= exercises.length && exercises.length > 0
 
   if (done && !sessionSaved.current) {
@@ -93,12 +83,13 @@ export default function ExercisePage() {
 
   if (!lesson || exercises.length === 0) {
     return (
-      <div className="px-4 pt-12 text-center">
+      <div className="px-5 pt-14 text-center">
         <p className="text-text-secondary">Lesson not found.</p>
       </div>
     )
   }
 
+  // Result screen
   if (done) {
     const correctCount = state.answers.filter((a) => a.correct).length
     const pct = Math.round((correctCount / exercises.length) * 100)
@@ -115,28 +106,33 @@ export default function ExercisePage() {
       })
 
     return (
-      <div className="px-4 pt-12 pb-8 flex flex-col gap-6">
+      <div className="px-5 pt-14 pb-10 flex flex-col gap-7">
         <motion.div
-          className="text-center"
-          initial={{ scale: 0.5, opacity: 0 }}
+          className="card-raised p-8 text-center"
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-[64px] font-bold text-accent leading-none">{pct}%</p>
-          <p className="text-text-secondary mt-2">
+          <p className="text-[72px] font-bold text-accent leading-none tracking-tight">{pct}%</p>
+          <p className="text-text-secondary mt-3 text-[17px]">
             {correctCount} of {exercises.length} correct
           </p>
         </motion.div>
 
         {weakPoints.length > 0 && (
-          <div className="bg-surface rounded-2xl p-5">
-            <h3 className="mb-2">Review these</h3>
+          <motion.div
+            className="card p-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="mb-1">Review these</h3>
             <div className="divide-y divide-border">
               {weakPoints.map((wp, i) => (
                 <WeakPointRow key={i} weakPoint={wp} />
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
 
         <Button className="w-full" onClick={() => router.push("/")}>
@@ -146,21 +142,22 @@ export default function ExercisePage() {
     )
   }
 
+  // Exercise screen
   const current = exercises[state.currentIndex]
 
   return (
-    <div className="px-4 pt-8 pb-4 flex flex-col gap-4">
-      <div className="flex items-center gap-3">
+    <div className="px-5 pt-10 pb-6 flex flex-col gap-5">
+      <div className="flex items-center gap-4">
         <button
           onClick={() => router.push("/")}
-          className="text-text-secondary text-caption"
+          className="text-text-tertiary text-[15px] font-medium active:opacity-60 transition-opacity"
         >
           Cancel
         </button>
         <div className="flex-1">
           <ScoreBar current={state.currentIndex} total={exercises.length} />
         </div>
-        <span className="text-caption text-text-secondary">
+        <span className="text-caption text-text-tertiary font-medium tabular-nums">
           {state.currentIndex + 1}/{exercises.length}
         </span>
       </div>
@@ -168,10 +165,10 @@ export default function ExercisePage() {
       <AnimatePresence mode="wait">
         <motion.div
           key={state.currentIndex}
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -30 }}
-          transition={{ duration: 0.2 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
         >
           {current.type === "flashcard" && (
             <Flashcard

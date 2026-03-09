@@ -17,25 +17,22 @@ const typeLabel: Record<string, string> = {
 
 export function LessonCard({ lesson, completed }: LessonCardProps) {
   return (
-    <div className="bg-surface rounded-2xl p-5">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="text-caption text-text-secondary font-medium">
-          Lesson {lesson.number}
-        </span>
-        <span className="text-caption text-text-tertiary">
-          {typeLabel[lesson.lessonType]}
+    <div className="card-raised p-6">
+      <div className="flex items-center gap-2 mb-3">
+        <span className="text-caption text-text-tertiary font-medium tracking-wide uppercase">
+          Lesson {lesson.number} &middot; {typeLabel[lesson.lessonType]}
         </span>
         {completed && (
-          <span className="text-caption text-accent font-medium ml-auto">Done</span>
+          <span className="text-caption text-accent font-semibold ml-auto">Done</span>
         )}
       </div>
 
-      <h2 className="mb-0.5">{lesson.title}</h2>
-      <p className="text-text-secondary text-caption mb-1">{lesson.titleJp}</p>
-      <p className="text-text-secondary text-[15px] mb-4">{lesson.goal}</p>
+      <h2 className="mb-1">{lesson.title}</h2>
+      <p className="text-text-tertiary text-caption mb-2">{lesson.titleJp}</p>
+      <p className="text-text-secondary text-[15px] mb-5 leading-relaxed">{lesson.goal}</p>
 
       <Link href={`/exercise/${lesson.id}`}>
-        <Button className="w-full">{completed ? "Practice Again" : "Start Practice"}</Button>
+        <Button className="w-full">{completed ? "Practice Again" : "Start"}</Button>
       </Link>
     </div>
   )

@@ -36,11 +36,11 @@ Welcome screen
 ```
 
 **Notes:**
+
 - Level/chapter selection syncs with their RareJob tutor progress
 - Reminder defaults to 8:00 AM (morning commute)
 - Skip is always available — no friction gates
 - Total: 4 taps to first exercise
-
 
 ### 1.2 Daily Exercise (core loop)
 
@@ -90,12 +90,12 @@ Home screen
 ```
 
 **Flow details:**
+
 1. **Listen phase** — Audio plays automatically. Transcript shown with Japanese translation below.
 2. **Record phase** — User taps mic, repeats the sentence. AI scores pronunciation.
 3. **Silent mode** — If mic is off, user reads along silently and self-rates (Got it / Repeat). For crowded trains.
 4. **5 sentences per session** — From the lesson's dialogue. ~1 min per sentence = 5 min total.
 5. **Score** — PROGOS-based scoring. Highlights specific words/sounds that need work.
-
 
 ### 1.3 Lesson Browser
 
@@ -140,11 +140,11 @@ Lessons tab
 ```
 
 **Notes:**
+
 - ✓ = practiced at least once
 - ● = available now, ○ = coming in v2
 - Level dropdown lets user preview ahead but daily exercises follow their tutor's pace
 - Lesson goals pulled directly from Jitsuyo-Eikaiwa materials
-
 
 ### 1.4 Progress & Streak
 
@@ -171,11 +171,11 @@ Progress tab
 ```
 
 **Notes:**
+
 - ● = practiced, ○ = missed, · = future/no data
 - Weak sounds aggregated across all practiced lessons
 - "Lessons practiced: 4/20" shows MVP coverage
 - Streak resets on missed day (simple, no freeze items in MVP)
-
 
 ---
 
@@ -200,37 +200,22 @@ Progress tab
 
 **5 screens total for MVP.** Onboarding is a one-time overlay, not a separate screen group.
 
-
 ---
 
 ## 3. Design System
 
-### 3.1 Color
+## The Metaphor
 
-```
-Background
-  base        #FFFFFF
-  secondary   #F5F5F7       ← Apple grey, used for cards/sections
+Study cards on a warm wooden desk. Everything is a physical object — cards have weight, shadows, depth. The cream background is the desk. White cards sit on top of it.
 
-Text
-  primary     #1D1D1F       ← near-black
-  secondary   #86868B       ← muted labels
-  tertiary    #AEAEB2       ← hints, placeholders
+## Core Rules
 
-Accent
-  green       #34C759       ← RareJob brand adjacent, iOS system green
-  green-light #E8FAE6       ← score backgrounds, success states
-
-Functional
-  error       #FF3B30
-  border      #E5E5EA       ← 1px borders only, no shadows
-```
-
-**Rules:**
-- No shadows anywhere. Depth via spacing and subtle background color shifts.
-- No gradients. Flat fills only.
-- Dark mode: invert base ↔ primary, keep green accent.
-
+1. **Depth from shadows, never borders.** Cards float above the surface with real shadow. No decorative borders anywhere.
+2. **White on cream.** That's the entire contrast system. White surfaces on warm cream background.
+3. **Options are text rows, not pills.** Inside the card, separated by hairline dividers — like iOS Settings. No colored fills, no individual card per option.
+4. **No pastel fills.** No light green buttons, no light red badges. They look AI-generated. Use text color alone to communicate state.
+5. **Quiet UI, loud content.** Progress bars, counters, labels — all tertiary/muted. The sentence being studied is the loudest thing on screen.
+6. **Generous breathing room.** Big gap between question and answers. Let the question sit and breathe.
 
 ### 3.2 Typography
 
@@ -247,24 +232,10 @@ Only these three. No other sizes.
 ```
 
 **Rules:**
+
 - Line height: 1.4 for body, 1.2 for title
 - Letter spacing: -0.02em for title (Apple-tight), 0 for body
 - Japanese text: same sizes, system font handles it
-
-
-### 3.3 Spacing
-
-4px base grid. Only use these values:
-
-```
-4   — inline gaps (icon to label)
-8   — tight padding (inside pills/tags)
-12  — between related items
-16  — section padding, card padding
-24  — between sections
-32  — major section gaps
-48  — screen top/bottom padding
-```
 
 ### 3.4 Radius
 
@@ -276,94 +247,6 @@ Only these three. No other sizes.
 
 No fully-rounded (999px) elements except the streak fire badge.
 
-
-### 3.5 Components
-
-#### Button — Primary
-```
-┌───────────────────────┐
-│       Start            │   bg: green
-│                        │   text: white
-└───────────────────────┘   radius: 12px
-                            height: 48px
-                            full-width on mobile
-```
-
-#### Button — Ghost
-```
-┌───────────────────────┐
-│       Done             │   bg: transparent
-│                        │   text: primary
-└───────────────────────┘   border: 1px #E5E5EA
-                            radius: 12px
-                            height: 48px
-```
-
-#### Card
-```
-┌───────────────────────┐
-│                       │   bg: #F5F5F7
-│   Content here        │   border: none
-│                       │   radius: 12px
-└───────────────────────┘   padding: 16px
-                            no shadow
-```
-
-#### Score Bar
-```
-━━━━━━━━━━━━━━━━━░░░░░░   bg: #E5E5EA
-━━━━━━━━━━━━━━━━━          fill: green
-                            height: 6px
-                            radius: 3px
-```
-
-#### Audio Player
-```
-┌───────────────────────────────┐
-│  ▶  ━━━━━━━━━━━━━●━━━  2:30  │   minimal, single line
-└───────────────────────────────┘   bg: secondary
-                                    radius: 12px
-```
-
-#### Mic Button (Record)
-```
-        ┌─────┐
-        │  ◉  │              48x48
-        └─────┘              bg: green (recording)
-                             bg: secondary (idle)
-                             radius: 12px
-```
-
-#### Streak Badge
-```
-  🔥 3                       inline with title
-                             caption size
-                             color: green when active
-                             color: secondary when zero
-```
-
-#### Tab Bar
-```
-┌─────────┬─────────┬─────────┐
-│  Today  │ Lessons │Progress │   3 tabs only
-└─────────┴─────────┴─────────┘   icon + label
-                                   active: green
-                                   inactive: secondary text
-                                   bg: base white
-                                   top border: 1px #E5E5EA
-```
-
-#### Weak Point Row
-```
-┌───────────────────────────────┐
-│  "breakfast" — /ˈbrekfəst/   │   text: primary
-│  Stress on first syllable    │   subtext: secondary
-└───────────────────────────────┘   bg: green-light
-                                    radius: 8px
-                                    padding: 12px
-```
-
-
 ### 3.6 Layout Principles
 
 1. **Single column, always.** No sidebars, no grids. One thing at a time.
@@ -373,17 +256,16 @@ No fully-rounded (999px) elements except the streak fire badge.
 5. **Bottom-anchored actions.** Primary CTA always at bottom of screen, pinned.
 6. **No modals in MVP.** Everything is a push transition.
 
-
 ### 3.7 Interaction Patterns
 
-| Action | Gesture | Feedback |
-|--------|---------|----------|
-| Play audio | Tap ▶ | Button becomes ❚❚, audio plays |
-| Record voice | Tap mic | Mic pulses green, waveform animates |
-| Stop recording | Tap mic again | Score calculates, result shown |
-| Next sentence | Tap "Next" or swipe left | Slide transition |
+| Action             | Gesture                   | Feedback                             |
+| ------------------ | ------------------------- | ------------------------------------ |
+| Play audio         | Tap ▶                     | Button becomes ❚❚, audio plays       |
+| Record voice       | Tap mic                   | Mic pulses green, waveform animates  |
+| Stop recording     | Tap mic again             | Score calculates, result shown       |
+| Next sentence      | Tap "Next" or swipe left  | Slide transition                     |
 | Silent mode toggle | Tap 🔇 in exercise header | Mic hidden, self-rate buttons appear |
-| Navigate tabs | Tap tab | Instant switch, no animation |
+| Navigate tabs      | Tap tab                   | Instant switch, no animation         |
 
 ### 3.8 Silent Mode (key differentiator)
 
@@ -411,7 +293,6 @@ When mic is off (crowded train scenario):
 - Still counts toward streak and daily completion
 - No score in silent mode — just completion
 
-
 ---
 
 ## 4. Content Mapping (Jitsuyo-Eikaiwa → App)
@@ -435,17 +316,16 @@ Jitsuyo-Eikaiwa Lesson
 
 **MVP: 5 dialogue lines per lesson, 20 lessons = 100 shadowing sentences.**
 
-
 ---
 
 ## 5. MVP Screen Priority
 
-| Priority | Screen | Status |
-|----------|--------|--------|
-| P0 | Home (daily card) | Build first |
-| P0 | Exercise: Shadowing | Core feature |
-| P0 | Score/Result | Closes the loop |
-| P1 | Lesson Browser | Navigation |
-| P1 | Progress/Streak | Retention |
-| P2 | Onboarding | Can hardcode level for MVP |
-| P2 | Settings | Minimal, reminder time only |
+| Priority | Screen              | Status                      |
+| -------- | ------------------- | --------------------------- |
+| P0       | Home (daily card)   | Build first                 |
+| P0       | Exercise: Shadowing | Core feature                |
+| P0       | Score/Result        | Closes the loop             |
+| P1       | Lesson Browser      | Navigation                  |
+| P1       | Progress/Streak     | Retention                   |
+| P2       | Onboarding          | Can hardcode level for MVP  |
+| P2       | Settings            | Minimal, reminder time only |

@@ -9,7 +9,7 @@ type ExerciseCardProps = {
 
 export function ExerciseCard({ children, className }: ExerciseCardProps) {
   return (
-    <div className={cn("bg-surface rounded-2xl p-5 min-h-[320px] flex flex-col", className)}>
+    <div className={cn("card-raised p-6 min-h-[360px] flex flex-col", className)}>
       {children}
     </div>
   )

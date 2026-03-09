@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAF8;
+  --background: #F2EDE4;
   --surface: #FFFFFF;
-  --accent: #2E7D32;
-  --accent-soft: #E8F5E9;
-  --text-primary: #1A1A1A;
-  --text-secondary: #8C8C8C;
-  --text-tertiary: #BCBCBC;
-  --border: #EBEBEB;
+  --surface-raised: #FFFFFF;
+  --accent: #1B6B3A;
+  --accent-soft: #D4EDDA;
+  --text-primary: #1C1917;
+  --text-secondary: #78716C;
+  --text-tertiary: #A8A29E;
+  --border: #E7E0D5;
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.04);
+  --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.06), 0 1px 3px rgba(28, 25, 23, 0.04);
+  --shadow-lg: 0 8px 28px rgba(28, 25, 23, 0.08), 0 2px 6px rgba(28, 25, 23, 0.04);
+  --shadow-xl: 0 16px 48px rgba(28, 25, 23, 0.10), 0 4px 12px rgba(28, 25, 23, 0.05);
+  --fill-empty: #F4F2EE;
+  --wrong: #DC2626;
+  --wrong-soft: #FEF2F2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
   --color-border: var(--border);
+  --color-fill-empty: var(--fill-empty);
+  --color-wrong: var(--wrong);
+  --color-wrong-soft: var(--wrong-soft);
   --font-sans: var(--font-instrument-sans);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
 }
 
 body {
@@ -28,39 +44,39 @@ body {
   color: var(--text-primary);
   font-family: var(--font-instrument-sans), "Instrument Sans", system-ui, sans-serif;
   font-size: 17px;
-  line-height: 1.6;
-  letter-spacing: -0.05rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3 {
-  line-height: 1.3;
-  font-weight: 600;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
-h1 { font-size: 28px; }
-h2 { font-size: 22px; }
-h3 { font-size: 17px; }
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
 
 small, .text-caption {
   font-size: 13px;
+  letter-spacing: 0;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
+/* Card base */
+.card {
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+.card-raised {
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary);
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 0; height: 0; }

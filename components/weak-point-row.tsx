@@ -6,13 +6,13 @@ type WeakPointRowProps = {
 
 export function WeakPointRow({ weakPoint }: WeakPointRowProps) {
   return (
-    <div className="flex items-center justify-between py-3">
+    <div className="flex items-center justify-between py-3.5">
       <div>
-        <p className="font-medium">{weakPoint.term}</p>
-        <p className="text-caption text-text-secondary">{weakPoint.translation}</p>
+        <p className="font-semibold text-[15px]">{weakPoint.term}</p>
+        <p className="text-caption text-text-tertiary mt-0.5">{weakPoint.translation}</p>
       </div>
-      <span className="text-caption text-red-500 font-medium">
-        {weakPoint.wrongCount}x wrong
+      <span className="text-caption text-text-tertiary">
+        {weakPoint.wrongCount}x missed
       </span>
     </div>
   )

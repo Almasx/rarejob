@@ -4,14 +4,14 @@ import { formatDate } from "@/lib/utils"
 
 type StreakCalendarProps = {
   practiceHistory: Record<string, boolean>
+  streak: number
 }
 
-export function StreakCalendar({ practiceHistory }: StreakCalendarProps) {
+export function StreakCalendar({ practiceHistory, streak }: StreakCalendarProps) {
   const today = new Date()
-  const weeks = 12
+  const weeks = 10
   const days: { date: string; practiced: boolean; isToday: boolean }[] = []
 
-  // Build grid: 12 weeks (84 days) ending today
   for (let i = weeks * 7 - 1; i >= 0; i--) {
     const d = new Date(today)
     d.setDate(d.getDate() - i)
@@ -24,20 +24,38 @@ export function StreakCalendar({ practiceHistory }: StreakCalendarProps) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex gap-[3px] flex-wrap" style={{ display: "grid", gridTemplateColumns: `repeat(${weeks}, 1fr)`, gridTemplateRows: "repeat(7, 1fr)" }}>
+    <div className="card-raised p-6">
+      <div className="flex items-end justify-between mb-5">
+        <div>
+          <span className="text-[44px] font-bold leading-none tracking-tight">{streak}</span>
+          <p className="text-text-secondary text-caption mt-1">
+            {streak === 1 ? "day" : "days"} in a row
+          </p>
+        </div>
+        <p className="text-caption text-text-tertiary">
+          {today.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+        </p>
+      </div>
+
+      <div
+        className="gap-[4px]"
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${weeks}, 1fr)`,
+          gridTemplateRows: "repeat(7, 1fr)",
+        }}
+      >
         {days.map((day) => (
           <div
             key={day.date}
             title={day.date}
-            className="rounded-[3px] aspect-square"
+            className="rounded-[5px] aspect-square transition-colors"
             style={{
               backgroundColor: day.practiced
                 ? "var(--accent)"
                 : day.isToday
                   ? "var(--accent-soft)"
-                  : "var(--border)",
-              opacity: day.practiced ? 1 : 0.5,
+                  : "var(--fill-empty)",
               minWidth: 0,
             }}
           />
