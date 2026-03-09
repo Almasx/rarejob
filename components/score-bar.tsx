@@ -16,7 +16,7 @@ export function ScoreBar({ current, total }: ScoreBarProps) {
         className="h-full bg-text-tertiary rounded-full"
         initial={{ width: 0 }}
         animate={{ width: `${pct}%` }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        transition={{ type: "spring", duration: 0.5, bounce: 0 }}
       />
     </div>
   )

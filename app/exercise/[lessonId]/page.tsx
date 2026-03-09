@@ -1,18 +1,19 @@
 "use client"
 
-import { useParams, useRouter } from "next/navigation"
-import { useReducer, useMemo, useCallback, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { lessons } from "@/lib/data"
-import { Exercise, AnswerResult, WeakPoint } from "@/lib/types"
-import { shuffleArray } from "@/lib/utils"
-import { useProgress } from "@/lib/progress-context"
-import { ScoreBar } from "@/components/score-bar"
-import { Flashcard } from "@/components/flashcard"
-import { TranslateQuiz } from "@/components/translate-quiz"
-import { FillBlank } from "@/components/fill-blank"
-import { WeakPointRow } from "@/components/weak-point-row"
 import { Button } from "@/components/button"
+import { FillBlank } from "@/components/fill-blank"
+import { Flashcard } from "@/components/flashcard"
+import { ScoreBar } from "@/components/score-bar"
+import { TranslateQuiz } from "@/components/translate-quiz"
+import { WeakPointRow } from "@/components/weak-point-row"
+import { lessons } from "@/lib/data"
+import { useProgress } from "@/lib/progress-context"
+import { AnswerResult, Exercise, WeakPoint } from "@/lib/types"
+import { shuffleArray } from "@/lib/utils"
+import { AnimatePresence, motion } from "framer-motion"
+import { useParams, useRouter } from "next/navigation"
+import { useCallback, useEffect, useMemo, useReducer, useRef } from "react"
+import useMeasure from "react-use-measure"
 
 type State = {
   currentIndex: number
@@ -41,14 +42,17 @@ function buildExercises(lessonId: string): Exercise[] {
   return shuffleArray(exercises).slice(0, 10)
 }
 
+const springGentle = { type: "spring" as const, duration: 0.4, bounce: 0 }
+
 export default function ExercisePage() {
   const params = useParams()
   const router = useRouter()
   const { completeSession } = useProgress()
   const lessonId = params.lessonId as string
-  const sessionSaved = useRef(false)
+  const savedRef = useRef(false)
 
   const exercises = useMemo(() => buildExercises(lessonId), [lessonId])
+  const [measureRef, bounds] = useMeasure()
 
   const [state, dispatch] = useReducer(reducer, {
     currentIndex: 0,
@@ -65,21 +69,23 @@ export default function ExercisePage() {
   const lesson = lessons.find((l) => l.id === lessonId)
   const done = state.currentIndex >= exercises.length && exercises.length > 0
 
-  if (done && !sessionSaved.current) {
-    sessionSaved.current = true
-    const weakPoints: WeakPoint[] = state.answers
-      .filter((a) => !a.correct)
-      .map((a) => {
-        if (a.exercise.type === "flashcard") {
-          return { term: a.exercise.data.front, translation: a.exercise.data.back, wrongCount: 1 }
-        }
-        if (a.exercise.type === "translate") {
-          return { term: a.exercise.data.sentenceJp, translation: a.exercise.data.correct, wrongCount: 1 }
-        }
-        return { term: a.exercise.data.blank, translation: a.exercise.data.sentence, wrongCount: 1 }
-      })
-    completeSession(lessonId, weakPoints)
-  }
+  useEffect(() => {
+    if (done && !savedRef.current) {
+      savedRef.current = true
+      const weakPoints: WeakPoint[] = state.answers
+        .filter((a) => !a.correct)
+        .map((a) => {
+          if (a.exercise.type === "flashcard") {
+            return { term: a.exercise.data.front, translation: a.exercise.data.back, wrongCount: 1 }
+          }
+          if (a.exercise.type === "translate") {
+            return { term: a.exercise.data.sentenceJp, translation: a.exercise.data.correct, wrongCount: 1 }
+          }
+          return { term: a.exercise.data.blank, translation: a.exercise.data.sentence, wrongCount: 1 }
+        })
+      completeSession(lessonId, weakPoints)
+    }
+  }, [done, state.answers, completeSession, lessonId])
 
   if (!lesson || exercises.length === 0) {
     return (
@@ -106,39 +112,44 @@ export default function ExercisePage() {
       })
 
     return (
-      <div className="px-5 pt-14 pb-10 flex flex-col gap-7">
-        <motion.div
-          className="card-raised p-8 text-center"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="text-[72px] font-bold text-accent leading-none tracking-tight">{pct}%</p>
-          <p className="text-text-secondary mt-3 text-[17px]">
-            {correctCount} of {exercises.length} correct
+      <motion.div
+        className="px-5 pt-14 pb-10 flex flex-col gap-3"
+        initial={{ opacity: 0, filter: "blur(8px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={springGentle}
+      >
+        <div className="card-raised p-6 pb-6">
+          <h2>
+            {pct >= 80 ? "Nice work" : pct >= 50 ? "Getting there" : "Keep practicing"}
+          </h2>
+          <p className="text-text-tertiary text-[15px] mt-1 mb-6">
+            {correctCount} of {exercises.length} correct &middot; {lesson.title}
           </p>
-        </motion.div>
+          <div className="flex gap-[3px]">
+            {state.answers.map((a, i) => (
+              <div
+                key={i}
+                className={`flex-1 h-[8px] rounded-full ${a.correct ? "bg-accent" : "bg-border"}`}
+              />
+            ))}
+          </div>
+        </div>
 
         {weakPoints.length > 0 && (
-          <motion.div
-            className="card p-5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+          <div className="card-raised p-5">
             <h3 className="mb-1">Review these</h3>
             <div className="divide-y divide-border">
               {weakPoints.map((wp, i) => (
                 <WeakPointRow key={i} weakPoint={wp} />
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
 
         <Button className="w-full" onClick={() => router.push("/")}>
           Done
         </Button>
-      </div>
+      </motion.div>
     )
   }
 
@@ -162,34 +173,42 @@ export default function ExercisePage() {
         </span>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={state.currentIndex}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -40 }}
-          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {current.type === "flashcard" && (
-            <Flashcard
-              data={current.data}
-              onRate={(rating) => handleAnswer(current, rating !== "again", rating)}
-            />
-          )}
-          {current.type === "translate" && (
-            <TranslateQuiz
-              data={current.data}
-              onAnswer={(correct) => handleAnswer(current, correct, "")}
-            />
-          )}
-          {current.type === "fill-blank" && (
-            <FillBlank
-              data={current.data}
-              onAnswer={(correct) => handleAnswer(current, correct, "")}
-            />
-          )}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        animate={{ height: bounds.height > 0 ? bounds.height : "auto" }}
+        transition={springGentle}
+        className="overflow-visible"
+      >
+        <div ref={measureRef}>
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={state.currentIndex}
+              initial={{ opacity: 0, filter: "blur(8px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(8px)" }}
+              transition={springGentle}
+            >
+              {current.type === "flashcard" && (
+                <Flashcard
+                  data={current.data}
+                  onRate={(rating) => handleAnswer(current, rating !== "again", rating)}
+                />
+              )}
+              {current.type === "translate" && (
+                <TranslateQuiz
+                  data={current.data}
+                  onAnswer={(correct) => handleAnswer(current, correct, "")}
+                />
+              )}
+              {current.type === "fill-blank" && (
+                <FillBlank
+                  data={current.data}
+                  onAnswer={(correct) => handleAnswer(current, correct, "")}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </div>
   )
 }

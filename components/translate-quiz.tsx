@@ -48,7 +48,7 @@ export function TranslateQuiz({ data, onAnswer }: TranslateQuizProps) {
                 "w-full text-left px-0 py-4.5 text-[15px] flex gap-3 items-baseline transition-all",
                 !isLast && "border-b border-border",
                 !showResult && "active:opacity-60",
-                showResult && isCorrect && "text-accent font-semibold",
+                showResult && isCorrect && "text-accent",
                 showResult && isSelected && !isCorrect && "text-wrong",
                 showResult && !isSelected && !isCorrect && "opacity-30"
               )}
