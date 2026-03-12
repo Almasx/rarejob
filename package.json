@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && convex dev",
+    "dev:convex": "convex dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@convex-dev/better-auth": "^0.10.13",
+    "better-auth": "1.4.9",
     "convex": "^1.32.0",
     "framer-motion": "^12.34.3",
+    "jotai": "^2.18.1",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",
     "react": "19.2.3",
@@ -34,5 +38,11 @@
   "trustedDependencies": [
     "sharp",
     "unrs-resolver"
-  ]
+  ],
+  "overrides": {
+    "@better-auth/core": "1.4.9"
+  },
+  "resolutions": {
+    "@better-auth/core": "1.4.9"
+  }
 }

@@ -83,6 +83,7 @@ export default defineSchema({
     practiceHistory: v.any(),
     currentLevel: v.optional(v.number()),
     currentChapter: v.optional(v.number()),
+    onboardingCompleted: v.optional(v.boolean()),
   }).index("by_userId", ["userId"]),
 
   exerciseSessions: defineTable({

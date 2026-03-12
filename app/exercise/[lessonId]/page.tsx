@@ -6,7 +6,6 @@ import { ScoreBar } from "@/components/score-bar"
 import { SessionResult } from "@/components/session-result"
 import { TranslateQuiz } from "@/components/translate-quiz"
 import { api } from "@/convex/_generated/api"
-import { getUserId } from "@/lib/userId"
 import { Exercise, AnswerResult, Flashcard as FlashcardType, TranslateItem, FillBlankItem } from "@/lib/types"
 import { shuffleArray } from "@/lib/utils"
 import { useMutation, useQuery } from "convex/react"
@@ -72,7 +71,6 @@ export default function ExercisePage() {
   const params = useParams()
   const router = useRouter()
   const lessonId = params.lessonId as string
-  const userId = getUserId()
 
   const lesson = useQuery(api.lessons.getByKey, { lessonKey: lessonId })
   const completeSession = useMutation(api.sessions.complete)
@@ -97,12 +95,11 @@ export default function ExercisePage() {
     []
   )
 
-  // Submit once when all answers are in, derived from state
+  // Submit once when all answers are in
   const done = state.currentIndex >= exercises.length && exercises.length > 0
   if (done && !state.submitted) {
     dispatch({ type: "SUBMITTED" })
     completeSession({
-      userId,
       lessonKey: lessonId,
       answers: state.answers.map(mapAnswerForMutation),
     })

@@ -1,5 +1,6 @@
 import { mutation, query } from "./_generated/server"
 import { v } from "convex/values"
+import { authComponent } from "./auth"
 
 function formatDate(date: Date): string {
   return date.toISOString().split("T")[0]
@@ -23,7 +24,6 @@ function calculateStreak(
 
 export const complete = mutation({
   args: {
-    userId: v.string(),
     lessonKey: v.string(),
     answers: v.array(
       v.object({
@@ -40,6 +40,9 @@ export const complete = mutation({
     ),
   },
   handler: async (ctx, args) => {
+    const user = await authComponent.getAuthUser(ctx)
+    const userId = user._id
+
     const now = Date.now()
     const today = formatDate(new Date())
     const correctCount = args.answers.filter((a) => a.correct).length
@@ -48,7 +51,7 @@ export const complete = mutation({
 
     // 1. Create session
     const sessionId = await ctx.db.insert("exerciseSessions", {
-      userId: args.userId,
+      userId,
       lessonKey: args.lessonKey,
       completedAt: now,
       totalQuestions,
@@ -60,7 +63,7 @@ export const complete = mutation({
     for (const answer of args.answers) {
       await ctx.db.insert("exerciseAnswers", {
         sessionId,
-        userId: args.userId,
+        userId,
         exerciseType: answer.exerciseType,
         question: answer.question,
         correctAnswer: answer.correctAnswer,
@@ -72,12 +75,12 @@ export const complete = mutation({
     // 3. Update user progress
     let progress = await ctx.db
       .query("userProgress")
-      .withIndex("by_userId", (q) => q.eq("userId", args.userId))
+      .withIndex("by_userId", (q) => q.eq("userId", userId))
       .first()
 
     if (!progress) {
       const id = await ctx.db.insert("userProgress", {
-        userId: args.userId,
+        userId,
         currentStreak: 0,
         longestStreak: 0,
         completedLessons: [],
@@ -144,14 +147,15 @@ export const complete = mutation({
 
 export const listForUser = query({
   args: {
-    userId: v.string(),
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
+    const user = await authComponent.safeGetAuthUser(ctx)
+    if (!user) return []
     const limit = args.limit ?? 20
     return await ctx.db
       .query("exerciseSessions")
-      .withIndex("by_userId_completedAt", (q) => q.eq("userId", args.userId))
+      .withIndex("by_userId_completedAt", (q) => q.eq("userId", user._id))
       .order("desc")
       .take(limit)
   },

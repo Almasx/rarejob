@@ -59,3 +59,26 @@ export const getByLevelChapter = query({
     return lessons.sort((a, b) => a.lessonNumber - b.lessonNumber)
   },
 })
+
+export const getChaptersForLevel = query({
+  args: { level: v.number() },
+  handler: async (ctx, args) => {
+    const lessons = await ctx.db
+      .query("lessons")
+      .withIndex("by_level_chapter", (idx) => idx.eq("level", args.level))
+      .collect()
+
+    const seen = new Map<number, { chapter: number; title: string; titleJp: string }>()
+    for (const l of lessons) {
+      if (!seen.has(l.chapter)) {
+        seen.set(l.chapter, {
+          chapter: l.chapter,
+          title: l.chapterTitle,
+          titleJp: l.chapterTitleJp,
+        })
+      }
+    }
+
+    return Array.from(seen.values()).sort((a, b) => a.chapter - b.chapter)
+  },
+})
