@@ -1,9 +1,11 @@
-import { mutation, query } from "./_generated/server"
+import { mutation, query, internalQuery } from "./_generated/server"
 import { v } from "convex/values"
 import { authComponent } from "./auth"
 
-function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0]
+function formatJSTDate(date: Date): string {
+  return new Date(date.getTime() + 9 * 60 * 60 * 1000)
+    .toISOString()
+    .split("T")[0]
 }
 
 function calculateStreak(
@@ -16,7 +18,7 @@ function calculateStreak(
   const todayDate = new Date(today)
   const yesterday = new Date(todayDate)
   yesterday.setDate(yesterday.getDate() - 1)
-  const yesterdayStr = formatDate(yesterday)
+  const yesterdayStr = formatJSTDate(yesterday)
 
   if (lastPracticeDate === yesterdayStr) return currentStreak + 1
   return 1
@@ -30,7 +32,8 @@ export const complete = mutation({
         exerciseType: v.union(
           v.literal("flashcard"),
           v.literal("translate"),
-          v.literal("fill-blank")
+          v.literal("fill-blank"),
+          v.literal("shadowing")
         ),
         question: v.string(),
         correctAnswer: v.string(),
@@ -44,7 +47,7 @@ export const complete = mutation({
     const userId = user._id
 
     const now = Date.now()
-    const today = formatDate(new Date())
+    const today = formatJSTDate(new Date())
     const correctCount = args.answers.filter((a) => a.correct).length
     const totalQuestions = args.answers.length
     const score = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0
@@ -125,6 +128,20 @@ export const complete = mutation({
         }
       }
     }
+    // Decrease weak points for correct answers
+    for (const answer of args.answers) {
+      if (answer.correct) {
+        const existing = wpMap.get(answer.question)
+        if (existing) {
+          const newCount = existing.wrongCount - 1
+          if (newCount <= 0) {
+            wpMap.delete(answer.question)
+          } else {
+            wpMap.set(answer.question, { ...existing, wrongCount: newCount })
+          }
+        }
+      }
+    }
 
     // Practice history
     const practiceHistory = {
@@ -173,5 +190,45 @@ export const getDetail = query({
       .collect()
 
     return { session, answers }
+  },
+})
+
+export const getWrongAnswers = internalQuery({
+  args: { sessionId: v.id("exerciseSessions") },
+  handler: async (ctx, args) => {
+    const session = await ctx.db.get(args.sessionId)
+    if (!session) return { answers: [], lessonKey: "" }
+
+    const answers = await ctx.db
+      .query("exerciseAnswers")
+      .withIndex("by_sessionId", (q) => q.eq("sessionId", args.sessionId))
+      .collect()
+
+    return {
+      lessonKey: session.lessonKey,
+      answers: answers.filter((a) => !a.correct),
+    }
+  },
+})
+
+export const getRecentAnswers = internalQuery({
+  args: { userId: v.string(), limit: v.number() },
+  handler: async (ctx, args) => {
+    const sessions = await ctx.db
+      .query("exerciseSessions")
+      .withIndex("by_userId_completedAt", (q) => q.eq("userId", args.userId))
+      .order("desc")
+      .take(args.limit)
+
+    const allAnswers = []
+    for (const session of sessions) {
+      const answers = await ctx.db
+        .query("exerciseAnswers")
+        .withIndex("by_sessionId", (q) => q.eq("sessionId", session._id))
+        .collect()
+      allAnswers.push(...answers)
+    }
+
+    return allAnswers
   },
 })

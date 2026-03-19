@@ -1,4 +1,4 @@
-import { query, mutation } from "./_generated/server"
+import { query, mutation, internalQuery } from "./_generated/server"
 import { v } from "convex/values"
 import { authComponent } from "./auth"
 
@@ -51,6 +51,7 @@ export const getDashboard = query({
         weakPoints: [] as { term: string; translation: string; wrongCount: number }[],
         practiceHistory: {} as Record<string, boolean>,
         completedLessons: [] as string[],
+        practiceGoals: [] as string[],
       }
     }
 
@@ -66,6 +67,7 @@ export const getDashboard = query({
         weakPoints: [] as { term: string; translation: string; wrongCount: number }[],
         practiceHistory: {} as Record<string, boolean>,
         completedLessons: [] as string[],
+        practiceGoals: [] as string[],
       }
     }
 
@@ -75,6 +77,7 @@ export const getDashboard = query({
       weakPoints: progress.weakPoints,
       practiceHistory: progress.practiceHistory as Record<string, boolean>,
       completedLessons: progress.completedLessons,
+      practiceGoals: progress.practiceGoals ?? [],
     }
   },
 })
@@ -83,6 +86,7 @@ export const completeOnboarding = mutation({
   args: {
     level: v.number(),
     chapter: v.number(),
+    practiceGoals: v.optional(v.array(v.string())),
   },
   handler: async (ctx, args) => {
     const user = await authComponent.getAuthUser(ctx)
@@ -98,6 +102,7 @@ export const completeOnboarding = mutation({
         currentLevel: args.level,
         currentChapter: args.chapter,
         onboardingCompleted: true,
+        practiceGoals: args.practiceGoals,
       })
     } else {
       await ctx.db.insert("userProgress", {
@@ -110,7 +115,21 @@ export const completeOnboarding = mutation({
         currentLevel: args.level,
         currentChapter: args.chapter,
         onboardingCompleted: true,
+        practiceGoals: args.practiceGoals,
       })
     }
+  },
+})
+
+export const getForAction = internalQuery({
+  args: {},
+  handler: async (ctx) => {
+    const user = await authComponent.safeGetAuthUser(ctx)
+    if (!user) return null
+
+    return await ctx.db
+      .query("userProgress")
+      .withIndex("by_userId", (q) => q.eq("userId", user._id))
+      .first()
   },
 })

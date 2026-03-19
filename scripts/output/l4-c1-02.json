@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c1-02",
+  "lessonNumber": 2,
+  "title": "Email & Messages",
+  "titleJp": "メールとメッセージ",
+  "goal": "I can listen to and understand an office conversation about emails and messages.",
+  "goalJp": "職場のメールやメッセージに関する会話を聞いて理解できる。",
+  "lessonType": "LISTENING",
+  "vocabulary": [
+    {
+      "word": "follow up",
+      "wordJp": "フォローアップする、後で対応する",
+      "pronunciation": "ˈfɑːloʊ ʌp",
+      "exampleEn": "I'll follow up with the client tomorrow.",
+      "exampleJp": "明日、クライアントにフォローアップします。"
+    },
+    {
+      "word": "CC (someone)",
+      "wordJp": "（人を）CCに入れる",
+      "pronunciation": "siː siː",
+      "exampleEn": "Please CC Yuki on the email.",
+      "exampleJp": "メールでユキをCCに入れてください。"
+    },
+    {
+      "word": "attachment",
+      "wordJp": "添付ファイル",
+      "pronunciation": "əˈtætʃmənt",
+      "exampleEn": "The attachment is too large.",
+      "exampleJp": "添付ファイルが大きすぎます。"
+    },
+    {
+      "word": "clarify",
+      "wordJp": "明確にする、はっきりさせる",
+      "pronunciation": "ˈklærəfaɪ",
+      "exampleEn": "Could you clarify the deadline?",
+      "exampleJp": "締め切りを明確にしていただけますか。"
+    },
+    {
+      "word": "deadline",
+      "wordJp": "締め切り",
+      "pronunciation": "ˈdedlaɪn",
+      "exampleEn": "Our deadline is next Friday.",
+      "exampleJp": "締め切りは来週の金曜日です。"
+    },
+    {
+      "word": "forward (an email)",
+      "wordJp": "（メールを）転送する",
+      "pronunciation": "ˈfɔrwərd",
+      "exampleEn": "I'll forward the message to Kenji.",
+      "exampleJp": "そのメッセージをケンジに転送します。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "For polite requests in emails and messages, use 'Could you + base verb...?' or 'Would you mind + V-ing...?' Add softeners like 'please', 'just', or 'when you have a moment' to sound more natural.",
+    "ruleJp": "メールやメッセージで丁寧に依頼するときは「Could you + 動詞の原形...?」や「Would you mind + 動名詞...?」を使います。さらに、please / just / when you have a moment などを加えると、より丁寧で自然になります。",
+    "examples": [
+      {
+        "en": "Could you send the attachment when you have a moment?",
+        "jp": "お手すきのときに添付ファイルを送っていただけますか。"
+      },
+      {
+        "en": "Would you mind clarifying the deadline?",
+        "jp": "締め切りを明確にしていただけませんか。"
+      },
+      {
+        "en": "Please CC Kenji on your reply.",
+        "jp": "返信にケンジをCCに入れてください。"
+      }
+    ]
+  },
+  "context": "Saori and Michael are at the office. They listen to a voice message from a client and discuss how to reply by email.",
+  "contextJp": "サオリとマイケルはオフィスにいて、クライアントからのボイスメッセージを聞き、メールでの返信内容を相談します。",
+  "dialogue": [
+    {
+      "speaker": "Michael",
+      "lineEn": "Hey Saori, I just listened to the client's voice message.",
+      "lineJp": "サオリ、今クライアントからのボイスメッセージを聞きました。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "What did they say?",
+      "lineJp": "何と言っていましたか？"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "The file wouldn't open. They asked us to forward a PDF and CC Yuki.",
+      "lineJp": "ファイルが開けなかったそうです。PDFを転送して、ユキをCCに入れてほしいと言っていました。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Okay, I'll attach the PDF and follow up about the deadline.",
+      "lineJp": "わかりました。PDFを添付して、締め切りについてフォローアップします。"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Great. Could you also clarify which version they need?",
+      "lineJp": "いいですね。どのバージョンが必要かも明確にしてもらえますか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Sure. I'll write, 'Please confirm the deadline, and I'll CC Yuki.'",
+      "lineJp": "はい。「締め切りをご確認ください。ユキをCCに入れます。」と書きます。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "follow up",
+      "back": "フォローアップする、後で対応する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "添付ファイル",
+      "back": "attachment",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "deadline",
+      "back": "締め切り",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "（人を）CCに入れる",
+      "back": "CC (someone)",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "forward (an email)",
+      "back": "（メールを）転送する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "明確にする、はっきりさせる",
+      "back": "clarify",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "締め切りについて確認していただけますか？",
+      "correct": "Could you confirm the deadline?",
+      "wrong": [
+        "Could you confirm about the deadline?",
+        "Can you confirms the deadline?"
+      ]
+    },
+    {
+      "sentenceJp": "あなたをCCに入れました。",
+      "correct": "I CC'd you.",
+      "wrong": [
+        "I CC you.",
+        "I added you in CC."
+      ]
+    },
+    {
+      "sentenceJp": "添付ファイルをご確認ください。",
+      "correct": "Please check the attachment.",
+      "wrong": [
+        "Please check attachment.",
+        "Please check the attach file."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Please ___ me on your reply.",
+      "blank": "CC",
+      "options": [
+        "CC",
+        "copy",
+        "CCs",
+        "to CC"
+      ]
+    },
+    {
+      "sentence": "I ___ the report to this email.",
+      "blank": "attached",
+      "options": [
+        "attached",
+        "attach",
+        "attachment",
+        "attaching"
+      ]
+    },
+    {
+      "sentence": "Could you ___ the details so the team is clear?",
+      "blank": "clarify",
+      "options": [
+        "clarify",
+        "clear",
+        "explain about",
+        "clarifies"
+      ]
+    },
+    {
+      "sentence": "Please ___ this to Kenji as soon as possible.",
+      "blank": "forward",
+      "options": [
+        "forward",
+        "send",
+        "transfer",
+        "pass"
+      ]
+    }
+  ]
+}

@@ -10,8 +10,12 @@
 
 import type * as auth from "../auth.js";
 import type * as http from "../http.js";
+import type * as journal from "../journal.js";
 import type * as lessons from "../lessons.js";
+import type * as openai from "../openai.js";
 import type * as progress from "../progress.js";
+import type * as review from "../review.js";
+import type * as roleplay from "../roleplay.js";
 import type * as seed from "../seed.js";
 import type * as sessions from "../sessions.js";
 import type * as users from "../users.js";
@@ -25,8 +29,12 @@ import type {
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
   http: typeof http;
+  journal: typeof journal;
   lessons: typeof lessons;
+  openai: typeof openai;
   progress: typeof progress;
+  review: typeof review;
+  roleplay: typeof roleplay;
   seed: typeof seed;
   sessions: typeof sessions;
   users: typeof users;

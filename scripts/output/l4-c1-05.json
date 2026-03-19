@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c1-05",
+  "lessonNumber": 5,
+  "title": "Review — Work Life",
+  "titleJp": "復習 — 仕事と職場",
+  "goal": "I can review and confidently use key language about work life (commute, meetings, deadlines, overtime, remote work, promotions).",
+  "goalJp": "通勤、会議、締め切り、残業、リモートワーク、昇進など、仕事に関する重要な表現と文法を復習して使えるようになる。",
+  "lessonType": "REVIEW",
+  "vocabulary": [
+    {
+      "word": "commute",
+      "wordJp": "通勤する",
+      "pronunciation": "kəˈmjuːt",
+      "exampleEn": "I commute by train to our Tokyo office.",
+      "exampleJp": "私は電車で東京オフィスに通勤します。"
+    },
+    {
+      "word": "coworker",
+      "wordJp": "同僚",
+      "pronunciation": "ˈkoʊˌwɜːrkər",
+      "exampleEn": "My coworker helps me with reports.",
+      "exampleJp": "同僚が報告書を手伝ってくれます。"
+    },
+    {
+      "word": "deadline",
+      "wordJp": "締め切り",
+      "pronunciation": "ˈdedlaɪn",
+      "exampleEn": "We have a deadline on Friday.",
+      "exampleJp": "金曜日に締め切りがあります。"
+    },
+    {
+      "word": "overtime",
+      "wordJp": "残業",
+      "pronunciation": "ˈoʊvərˌtaɪm",
+      "exampleEn": "Kenji worked overtime to finish the project.",
+      "exampleJp": "健司はプロジェクトを終えるために残業しました。"
+    },
+    {
+      "word": "remote work",
+      "wordJp": "リモートワーク",
+      "pronunciation": "rɪˈmoʊt wɜːrk",
+      "exampleEn": "I do remote work twice a week.",
+      "exampleJp": "私は週に2回リモートワークをします。"
+    },
+    {
+      "word": "promotion",
+      "wordJp": "昇進",
+      "pronunciation": "prəˈmoʊʃən",
+      "exampleEn": "She got a promotion last month.",
+      "exampleJp": "彼女は先月昇進しました。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "Use the present perfect (have/has + past participle) to talk about: 1) life/work experience, 2) changes or results that affect now, and 3) states that started in the past and continue now. Common time words: for, since, already, yet, ever, never. Do not use it with finished past times (yesterday, last week).",
+    "ruleJp": "現在完了形（have/has + 過去分詞）は、①人生・仕事の経験、②今に影響する変化や結果、③過去に始まり今も続く状態を表します。よく使う語：for, since, already, yet, ever, never。昨日・先週などの完了した過去の時間表現とは一緒に使いません。",
+    "examples": [
+      {
+        "en": "I have worked here for three years.",
+        "jp": "私はここで3年間働いています。"
+      },
+      {
+        "en": "Have you ever led a meeting?",
+        "jp": "今までに会議を主導したことはありますか？"
+      },
+      {
+        "en": "He hasn't finished the report yet.",
+        "jp": "彼はまだ報告書を終えていません。"
+      }
+    ]
+  },
+  "context": "Saori and Alex are reviewing their work goals at a café after a team meeting.",
+  "contextJp": "サオリとアレックスはチーム会議の後、カフェで仕事の目標を振り返っています。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Have you ever worked remotely, Alex?",
+      "lineJp": "アレックス、今までにリモートで働いたことはありますか？"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Yes, I've done remote work since last year, but I still commute twice a week.",
+      "lineJp": "はい、昨年からリモートワークをしていますが、週に2回はまだ通勤しています。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Nice. My coworker Maria has already finished the report.",
+      "lineJp": "いいですね。私の同僚のマリアはもう報告書を終えています。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Great! Have we met the deadline yet?",
+      "lineJp": "よかった！私たちはもう締め切りに間に合いましたか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Not yet. Kenji is working overtime tonight to double-check it.",
+      "lineJp": "まだです。健司は確認のために今夜残業しています。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "He's dedicated. By the way, I've heard Yuki might get a promotion.",
+      "lineJp": "彼は熱心ですね。ところで、ユキが昇進するかもしれないと聞きました。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "commute",
+      "back": "通勤する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "同僚",
+      "back": "coworker",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "deadline",
+      "back": "締め切り",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "残業",
+      "back": "overtime",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "remote work",
+      "back": "リモートワーク",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "昇進",
+      "back": "promotion",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "私はこの会社で3年間働いています。",
+      "correct": "I have worked at this company for three years.",
+      "wrong": [
+        "I work at this company since three years.",
+        "I am working at this company for three years."
+      ]
+    },
+    {
+      "sentenceJp": "彼はもう報告書を終えましたか。",
+      "correct": "Has he finished the report yet?",
+      "wrong": [
+        "Did he finished the report yet?",
+        "Has he finish the report yet?"
+      ]
+    },
+    {
+      "sentenceJp": "私たちは今週ずっとリモートワークをしています。",
+      "correct": "We have worked remotely all week.",
+      "wrong": [
+        "We worked remote all week.",
+        "We are working remote all week."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "I ___ worked here since 2021.",
+      "blank": "have",
+      "options": [
+        "have",
+        "has",
+        "am",
+        "did"
+      ]
+    },
+    {
+      "sentence": "Has Kenji ___ the report yet?",
+      "blank": "finished",
+      "options": [
+        "finished",
+        "finish",
+        "finishes",
+        "finishing"
+      ]
+    },
+    {
+      "sentence": "We usually ___ the office at 7 p.m., so overtime is rare.",
+      "blank": "leave",
+      "options": [
+        "leave",
+        "leaves",
+        "left",
+        "leaving"
+      ]
+    },
+    {
+      "sentence": "She has ___ three promotions in her career.",
+      "blank": "had",
+      "options": [
+        "had",
+        "has",
+        "have",
+        "having"
+      ]
+    }
+  ]
+}

@@ -2,22 +2,41 @@
 
 import { Button } from "@/components/button"
 import { WeakPointRow } from "@/components/weak-point-row"
+import { api } from "@/convex/_generated/api"
+import { Id } from "@/convex/_generated/dataModel"
 import { AnswerResult } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import { useAction } from "convex/react"
 import { motion } from "framer-motion"
+import { BookOpen, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 const springGentle = { type: "spring" as const, duration: 0.4, bounce: 0 }
 
 type SessionResultProps = {
   answers: AnswerResult[]
   lessonTitle: string
+  sessionId: string | null
 }
 
-export function SessionResult({ answers, lessonTitle }: SessionResultProps) {
+export function SessionResult({ answers, lessonTitle, sessionId }: SessionResultProps) {
   const router = useRouter()
+  const generateJournal = useAction(api.openai.generateGrammarJournal)
+  const [journalStatus, setJournalStatus] = useState<"idle" | "loading" | "done" | "none">("idle")
+
+  const hasWrongAnswers = answers.some((a) => !a.correct)
+
+  // Auto-trigger journal generation when sessionId arrives
+  useEffect(() => {
+    if (!sessionId || !hasWrongAnswers || journalStatus !== "idle") return
+    setJournalStatus("loading")
+    generateJournal({ sessionId: sessionId as Id<"exerciseSessions"> })
+      .then((result) => setJournalStatus(result ? "done" : "none"))
+      .catch(() => setJournalStatus("none"))
+  }, [sessionId, hasWrongAnswers, journalStatus, generateJournal])
   const correctCount = answers.filter((a) => a.correct).length
-  const pct = Math.round((correctCount / answers.length) * 100)
+  const pct = answers.length > 0 ? Math.round((correctCount / answers.length) * 100) : 0
 
   const weakPoints = answers
     .filter((a) => !a.correct)
@@ -27,6 +46,9 @@ export function SessionResult({ answers, lessonTitle }: SessionResultProps) {
       }
       if (a.exercise.type === "translate") {
         return { term: a.exercise.data.sentenceJp, translation: a.exercise.data.correct, wrongCount: 1 }
+      }
+      if (a.exercise.type === "shadowing") {
+        return { term: a.exercise.data.lineEn, translation: a.exercise.data.lineJp, wrongCount: 1 }
       }
       return { term: a.exercise.data.blank, translation: a.exercise.data.sentence, wrongCount: 1 }
     })
@@ -62,6 +84,26 @@ export function SessionResult({ answers, lessonTitle }: SessionResultProps) {
             {weakPoints.map((wp, i) => (
               <WeakPointRow key={i} weakPoint={wp} />
             ))}
+          </div>
+        </div>
+      )}
+
+      {journalStatus === "loading" && (
+        <div className="card-raised p-5 flex items-center gap-3">
+          <Loader2 size={18} className="text-accent animate-spin shrink-0" />
+          <p className="text-base text-text-secondary">Analyzing your mistakes...</p>
+        </div>
+      )}
+
+      {journalStatus === "done" && (
+        <div className="card-raised p-5 flex items-center gap-4 text-left">
+
+          <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+            <BookOpen size={18} className="text-accent" />
+          </div>
+          <div className="flex-1">
+            <p className="font-semibold text-base">Grammar Journal Updated</p>
+            <p className="text-caption text-text-tertiary">Check your Grammar Journal on the dashboard</p>
           </div>
         </div>
       )}
