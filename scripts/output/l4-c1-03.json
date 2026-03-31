@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c1-03",
+  "lessonNumber": 3,
+  "title": "Meetings",
+  "titleJp": "会議",
+  "goal": "I can make polite suggestions and manage turn-taking in a meeting.",
+  "goalJp": "会議で丁寧に提案し、発言の順番をうまく調整できる。",
+  "lessonType": "SPEAKING",
+  "vocabulary": [
+    {
+      "word": "agenda",
+      "wordJp": "議題（アジェンダ）",
+      "pronunciation": "əˈdʒendə",
+      "exampleEn": "Let's check the agenda first.",
+      "exampleJp": "まず議題を確認しましょう。"
+    },
+    {
+      "word": "minutes",
+      "wordJp": "議事録",
+      "pronunciation": "ˈmɪnɪts",
+      "exampleEn": "Kenji will take the minutes.",
+      "exampleJp": "ケンジが議事録を取ります。"
+    },
+    {
+      "word": "action item",
+      "wordJp": "アクション項目（対応事項）",
+      "pronunciation": "ˈækʃən ˈaɪtəm",
+      "exampleEn": "We listed three action items.",
+      "exampleJp": "アクション項目を3つ挙げました。"
+    },
+    {
+      "word": "postpone",
+      "wordJp": "延期する",
+      "pronunciation": "poʊsˈpoʊn",
+      "exampleEn": "Can we postpone the meeting to Friday?",
+      "exampleJp": "会議を金曜日に延期できますか？"
+    },
+    {
+      "word": "consensus",
+      "wordJp": "合意（コンセンサス）",
+      "pronunciation": "kənˈsɛnsəs",
+      "exampleEn": "Do we have a consensus on this plan?",
+      "exampleJp": "この計画について合意は得られていますか？"
+    },
+    {
+      "word": "follow up",
+      "wordJp": "フォローアップする（追って対応する）",
+      "pronunciation": "ˈfɑːloʊ ʌp",
+      "exampleEn": "I'll follow up with an email.",
+      "exampleJp": "メールでフォローアップします。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "In meetings, use modal verbs and softeners for polite suggestions and requests: suggestions—'Shall we...?', 'How about ...ing?', 'Let's + base verb'; requests—'Could you...?', 'Would you mind ...ing?'.",
+    "ruleJp": "会議で丁寧に提案・依頼をするには、助動詞や緩和表現を使います。提案：「Shall we...?」「How about ～ing?」「Let's + 動詞原形」。依頼：「Could you...?」「Would you mind ～ing?」。",
+    "examples": [
+      {
+        "en": "Could we move on to the next item?",
+        "jp": "次の議題に移ってもいいですか？"
+      },
+      {
+        "en": "Would you mind sharing the slides?",
+        "jp": "スライドを共有していただけますか？"
+      },
+      {
+        "en": "How about postponing it until Friday?",
+        "jp": "金曜日まで延期するのはどうでしょうか？"
+      }
+    ]
+  },
+  "context": "Saori and Michael are leading a weekly project meeting on Zoom.",
+  "contextJp": "サオリとマイケルはZoomで週次プロジェクト会議を進行しています。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Shall we start? Today's agenda is the timeline and budget.",
+      "lineJp": "始めましょうか？今日の議題はスケジュールと予算です。"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Sounds good. Could you share the slides?",
+      "lineJp": "いいですね。スライドを共有していただけますか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Sure. Also, Kenji will take the minutes today.",
+      "lineJp": "もちろん。あと、今日はケンジが議事録を取ります。"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Thanks. If time is tight, could we postpone the Q&A?",
+      "lineJp": "ありがとうございます。時間が厳しければ、質疑応答を延期してもいいですか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "How about moving it to the end? Then we can confirm the action items first.",
+      "lineJp": "最後に回すのはどうでしょう？そうすれば、先にアクション項目を確認できます。"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Good idea. After the meeting, I'll follow up with an email to get consensus.",
+      "lineJp": "いい考えです。会議後、合意を得るためにメールでフォローアップします。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "agenda",
+      "back": "議題（アジェンダ）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "議事録",
+      "back": "minutes",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "action item",
+      "back": "アクション項目（対応事項）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "延期する",
+      "back": "postpone",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "consensus",
+      "back": "合意（コンセンサス）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "フォローアップする",
+      "back": "follow up",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "今日の会議で予算について話し合いましょう。",
+      "correct": "Let's discuss the budget in today's meeting.",
+      "wrong": [
+        "Let's discuss about the budget in today's meeting.",
+        "Let's talk about the budget in today meeting."
+      ]
+    },
+    {
+      "sentenceJp": "5分だけ会議を延長してもいいですか？",
+      "correct": "Could we extend the meeting by five minutes?",
+      "wrong": [
+        "Can we extend meeting by five minutes?",
+        "Could we extend the meeting five minutes?"
+      ]
+    },
+    {
+      "sentenceJp": "次の議題に移ってもいいですか？",
+      "correct": "Shall we move on to the next agenda item?",
+      "wrong": [
+        "Shall we move to next agenda item?",
+        "Shall we move on the next agenda item?"
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Could you ___ the slides with us?",
+      "blank": "share",
+      "options": [
+        "share",
+        "shares",
+        "sharing",
+        "to share"
+      ]
+    },
+    {
+      "sentence": "Let's ___ the action items before we finish.",
+      "blank": "review",
+      "options": [
+        "review",
+        "reviews",
+        "reviewed",
+        "reviewing"
+      ]
+    },
+    {
+      "sentence": "Sorry to ___, but can I add one point?",
+      "blank": "interrupt",
+      "options": [
+        "interrupt",
+        "interrupts",
+        "interruption",
+        "interrupted"
+      ]
+    },
+    {
+      "sentence": "Shall we move on ___ item three on the agenda?",
+      "blank": "to",
+      "options": [
+        "to",
+        "at",
+        "on",
+        "for"
+      ]
+    }
+  ]
+}

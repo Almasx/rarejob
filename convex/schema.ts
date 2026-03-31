@@ -84,6 +84,7 @@ export default defineSchema({
     currentLevel: v.optional(v.number()),
     currentChapter: v.optional(v.number()),
     onboardingCompleted: v.optional(v.boolean()),
+    practiceGoals: v.optional(v.array(v.string())),
   }).index("by_userId", ["userId"]),
 
   exerciseSessions: defineTable({
@@ -104,7 +105,8 @@ export default defineSchema({
     exerciseType: v.union(
       v.literal("flashcard"),
       v.literal("translate"),
-      v.literal("fill-blank")
+      v.literal("fill-blank"),
+      v.literal("shadowing")
     ),
     question: v.string(),
     correctAnswer: v.string(),
@@ -113,4 +115,70 @@ export default defineSchema({
   })
     .index("by_sessionId", ["sessionId"])
     .index("by_userId_correct", ["userId", "correct"]),
+
+  grammarJournal: defineTable({
+    userId: v.string(),
+    sessionId: v.id("exerciseSessions"),
+    lessonKey: v.string(),
+    createdAt: v.number(),
+    entries: v.array(
+      v.object({
+        question: v.string(),
+        userAnswer: v.string(),
+        correctAnswer: v.string(),
+        exerciseType: v.string(),
+        explanationEn: v.string(),
+        explanationJp: v.string(),
+        grammarRule: v.string(),
+        exampleCorrect: v.string(),
+      })
+    ),
+  })
+    .index("by_userId", ["userId"])
+    .index("by_userId_createdAt", ["userId", "createdAt"])
+    .index("by_sessionId", ["sessionId"]),
+
+  dailyReviews: defineTable({
+    userId: v.string(),
+    date: v.string(),
+    exercises: v.array(
+      v.object({
+        type: v.union(
+          v.literal("flashcard"),
+          v.literal("translate"),
+          v.literal("fill-blank")
+        ),
+        question: v.string(),
+        correctAnswer: v.string(),
+        options: v.optional(v.array(v.string())),
+        source: v.union(v.literal("weak-point"), v.literal("recent")),
+        wrongCount: v.optional(v.number()),
+      })
+    ),
+    completed: v.boolean(),
+    score: v.optional(v.number()),
+  })
+    .index("by_userId_date", ["userId", "date"])
+    .index("by_userId", ["userId"]),
+
+  roleplaySessions: defineTable({
+    userId: v.string(),
+    scenarioId: v.string(),
+    status: v.union(v.literal("active"), v.literal("completed")),
+    messages: v.array(
+      v.object({
+        role: v.union(v.literal("user"), v.literal("assistant")),
+        content: v.string(),
+      })
+    ),
+    startedAt: v.number(),
+    completedAt: v.optional(v.number()),
+    score: v.optional(v.number()),
+    feedbackEn: v.optional(v.string()),
+    feedbackJp: v.optional(v.string()),
+    strengths: v.optional(v.array(v.string())),
+    improvements: v.optional(v.array(v.string())),
+  })
+    .index("by_userId", ["userId"])
+    .index("by_userId_status", ["userId", "status"]),
 })

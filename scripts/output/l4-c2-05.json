@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c2-05",
+  "lessonNumber": 5,
+  "title": "Review (Social Situations)",
+  "titleJp": "復習（社交の場面）",
+  "goal": "I can review and handle common social situations: make small talk, make polite requests and offers, accept or decline invitations, and exchange contact details.",
+  "goalJp": "社交の場面でよくある状況を復習し、世間話をしたり、丁寧に依頼・申し出をしたり、招待を受ける／断る、連絡先を交換することができる。",
+  "lessonType": "REVIEW",
+  "vocabulary": [
+    {
+      "word": "make small talk",
+      "wordJp": "世間話をする",
+      "pronunciation": "meɪk smɔːl tɔːk",
+      "exampleEn": "We made small talk about the weather.",
+      "exampleJp": "私たちは天気について世間話をしました。"
+    },
+    {
+      "word": "break the ice",
+      "wordJp": "場の雰囲気を和ませる",
+      "pronunciation": "breɪk ðə aɪs",
+      "exampleEn": "A joke helped us break the ice.",
+      "exampleJp": "冗談がきっかけで打ち解けました。"
+    },
+    {
+      "word": "introduce (someone) to ~",
+      "wordJp": "（人を〜に）紹介する",
+      "pronunciation": "ˌɪntrəˈduːs",
+      "exampleEn": "May I introduce you to my colleague?",
+      "exampleJp": "あなたを私の同僚に紹介してもいいですか？"
+    },
+    {
+      "word": "exchange contact details",
+      "wordJp": "連絡先を交換する",
+      "pronunciation": "ɪksˈtʃeɪndʒ ˈkɒntækt ˈdiːteɪlz",
+      "exampleEn": "Shall we exchange contact details?",
+      "exampleJp": "連絡先を交換しませんか？"
+    },
+    {
+      "word": "RSVP",
+      "wordJp": "出欠を知らせる",
+      "pronunciation": "ˌɑːr ˌɛs ˌviː ˈpiː",
+      "exampleEn": "Please RSVP by Friday.",
+      "exampleJp": "金曜までに出欠をお知らせください。"
+    },
+    {
+      "word": "compliment",
+      "wordJp": "ほめ言葉／ほめる",
+      "pronunciation": "ˈkɒmplɪmənt",
+      "exampleEn": "He gave me a nice compliment.",
+      "exampleJp": "彼は私に素敵なほめ言葉をくれました。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "To be polite in social situations, use modal verbs for requests and offers. Use could/would for requests, would you mind + verb-ing for softer requests, and suggestions with shall we ...? or how about + verb-ing.",
+    "ruleJp": "社交の場面で丁寧に話すには、依頼・申し出に助動詞を使います。依頼には could/would、さらに柔らかくするには would you mind + 動詞-ing、誘いには shall we ～? や how about + 動詞-ing を使います。",
+    "examples": [
+      {
+        "en": "Could you introduce me to the host?",
+        "jp": "主催者に私を紹介していただけますか？"
+      },
+      {
+        "en": "Would you mind waiting a minute?",
+        "jp": "1分ほど待っていただけますか？"
+      },
+      {
+        "en": "How about meeting after the talk?",
+        "jp": "発表の後に会いませんか？"
+      }
+    ]
+  },
+  "context": "At a business networking event in Tokyo, Saori meets Daniel.",
+  "contextJp": "東京のビジネス交流会で、サオリはダニエルと出会います。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Hi, I'm Saori. May I introduce you to my colleague, Kenji?",
+      "lineJp": "こんにちは、サオリです。同僚のケンジを紹介してもいいですか？"
+    },
+    {
+      "speaker": "Daniel",
+      "lineEn": "Nice to meet you, Saori. Sure—and the MC's joke really broke the ice, didn't it?",
+      "lineJp": "はじめまして、サオリ。いいですよ。司会者のジョークで本当に場が和みましたよね？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "It did! Could you wait a moment while I get Kenji?",
+      "lineJp": "そうですね！私がケンジを呼んでくる間、少し待っていただけますか？"
+    },
+    {
+      "speaker": "Daniel",
+      "lineEn": "No problem. Also, would you mind opening this window? It's a bit warm.",
+      "lineJp": "大丈夫です。ついでに、この窓を開けてもらってもいいですか？少し暑いです。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Not at all. By the way, shall we exchange contact details after you meet Kenji?",
+      "lineJp": "いいですよ。ところで、ケンジと会った後に連絡先を交換しませんか？"
+    },
+    {
+      "speaker": "Daniel",
+      "lineEn": "I'd love to. Thanks, and nice presentation—you got a lot of compliments.",
+      "lineJp": "ぜひ。ありがとう。それから発表、よかったですよ。たくさん褒められていました。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "break the ice",
+      "back": "場の雰囲気を和ませる",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "世間話をする",
+      "back": "make small talk",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "introduce (someone) to ~",
+      "back": "（人を〜に）紹介する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "連絡先を交換する",
+      "back": "exchange contact details",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "compliment",
+      "back": "ほめ言葉／ほめる",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "出欠を知らせる",
+      "back": "RSVP",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "連絡先を交換しませんか？",
+      "correct": "Shall we exchange contact details?",
+      "wrong": [
+        "Do we exchange contact details?",
+        "Let's exchange our contact."
+      ]
+    },
+    {
+      "sentenceJp": "失礼ですが、窓を開けていただけますか？",
+      "correct": "Excuse me, could you open the window?",
+      "wrong": [
+        "Please open the window.",
+        "Can you to open the window?"
+      ]
+    },
+    {
+      "sentenceJp": "同僚をあなたに紹介してもいいですか？",
+      "correct": "May I introduce my colleague to you?",
+      "wrong": [
+        "May I introduce my colleague for you?",
+        "May I introduce you my colleague?"
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Would you mind ___ the window?",
+      "blank": "opening",
+      "options": [
+        "opening",
+        "to open",
+        "open",
+        "opened"
+      ]
+    },
+    {
+      "sentence": "How about ___ small talk before the meeting?",
+      "blank": "making",
+      "options": [
+        "making",
+        "to make",
+        "make",
+        "made"
+      ]
+    },
+    {
+      "sentence": "Could you ___ me to the host?",
+      "blank": "introduce",
+      "options": [
+        "introduce",
+        "introduces",
+        "introducing",
+        "to introduce"
+      ]
+    },
+    {
+      "sentence": "Thanks for ___ me to your friends.",
+      "blank": "introducing",
+      "options": [
+        "introducing",
+        "introduce",
+        "to introduce",
+        "introduced"
+      ]
+    }
+  ]
+}

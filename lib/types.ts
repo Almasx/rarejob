@@ -62,12 +62,19 @@ export type Lesson = {
   }
 }
 
-export type ExerciseType = "flashcard" | "translate" | "fill-blank"
+export type ShadowingItem = {
+  speaker: string
+  lineEn: string
+  lineJp: string
+}
+
+export type ExerciseType = "flashcard" | "translate" | "fill-blank" | "shadowing"
 
 export type Exercise =
   | { type: "flashcard"; data: Flashcard }
   | { type: "translate"; data: TranslateItem }
   | { type: "fill-blank"; data: FillBlankItem }
+  | { type: "shadowing"; data: ShadowingItem }
 
 export type AnswerResult = {
   exercise: Exercise

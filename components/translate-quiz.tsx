@@ -7,7 +7,7 @@ import { useMemo, useState } from "react"
 
 type TranslateQuizProps = {
   data: TranslateItem
-  onAnswer: (correct: boolean) => void
+  onAnswer: (correct: boolean, selected: string) => void
 }
 
 const letters = ["a", "b", "c"]
@@ -24,7 +24,7 @@ export function TranslateQuiz({ data, onAnswer }: TranslateQuizProps) {
     if (selected) return
     setSelected(choice)
     const correct = choice === data.correct
-    setTimeout(() => onAnswer(correct), correct ? 2000 : 4000)
+    setTimeout(() => onAnswer(correct, choice), correct ? 2000 : 4000)
   }
 
   return (

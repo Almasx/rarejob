@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c1-04",
+  "lessonNumber": 4,
+  "title": "Giving Presentations",
+  "titleJp": "プレゼンテーションをする",
+  "goal": "I can give a clear short presentation and handle basic Q&A.",
+  "goalJp": "短く明確なプレゼンを行い、基本的な質疑応答に対応できる。",
+  "lessonType": "SPEAKING",
+  "vocabulary": [
+    {
+      "word": "slide deck",
+      "wordJp": "スライド資料",
+      "pronunciation": "slaɪd dɛk",
+      "exampleEn": "Our slide deck has ten slides.",
+      "exampleJp": "私たちのスライド資料は10枚あります。"
+    },
+    {
+      "word": "agenda",
+      "wordJp": "議題（アジェンダ）",
+      "pronunciation": "əˈdʒɛndə",
+      "exampleEn": "Here is today's agenda.",
+      "exampleJp": "こちらが本日の議題です。"
+    },
+    {
+      "word": "key takeaway",
+      "wordJp": "重要なポイント",
+      "pronunciation": "kiː ˈteɪkəweɪ",
+      "exampleEn": "The key takeaway is that sales are rising.",
+      "exampleJp": "重要なポイントは、売上が伸びていることです。"
+    },
+    {
+      "word": "eye contact",
+      "wordJp": "アイコンタクト",
+      "pronunciation": "aɪ ˈkɒntækt",
+      "exampleEn": "Make eye contact with the audience.",
+      "exampleJp": "聴衆とアイコンタクトを取りましょう。"
+    },
+    {
+      "word": "rehearse",
+      "wordJp": "リハーサルをする",
+      "pronunciation": "rɪˈhɜːrs",
+      "exampleEn": "I rehearsed my presentation twice.",
+      "exampleJp": "私はプレゼンを2回リハーサルしました。"
+    },
+    {
+      "word": "Q&A",
+      "wordJp": "質疑応答",
+      "pronunciation": "ˌkjuː ən ˈeɪ",
+      "exampleEn": "We'll have Q&A at the end.",
+      "exampleJp": "最後に質疑応答があります。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "In presentations, use polite signposting: 'I'd like to + verb' to state your intention, 'I'm going to + verb' to outline the plan, and 'Let me + verb' to guide the audience. Do not say 'explain about'—use 'explain + noun'.",
+    "ruleJp": "プレゼンでは丁寧なサインポスト表現を使いましょう。意図を述べるときは “I'd like to + 動詞”、計画を示すときは “I'm going to + 動詞”、聴衆を導くときは “Let me + 動詞” を使います。“explain about” は誤用で、“explain + 名詞” とします。",
+    "examples": [
+      {
+        "en": "I'd like to start with the agenda.",
+        "jp": "まず議題から始めたいと思います。"
+      },
+      {
+        "en": "Today I'm going to talk about our new product.",
+        "jp": "今日は新製品についてお話しします。"
+      },
+      {
+        "en": "Let me explain our timeline.",
+        "jp": "タイムラインをご説明します。"
+      }
+    ]
+  },
+  "context": "Saori is practicing a short presentation about a new service with Michael at work.",
+  "contextJp": "サオリは職場で新サービスの短いプレゼンをマイケルと一緒に練習しています。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "I'd like to run through my slide deck. Can you give me feedback?",
+      "lineJp": "スライド資料を一通り確認したいです。フィードバックをいただけますか？"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Sure. Start with the agenda so the audience knows the flow.",
+      "lineJp": "もちろん。流れが伝わるように、まず議題から始めてください。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Okay. Today I'm going to introduce the service and explain the timeline.",
+      "lineJp": "わかりました。今日はサービスを紹介して、タイムラインを説明します。"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Good. Remember to make eye contact and speak slowly.",
+      "lineJp": "いいですね。アイコンタクトを取り、ゆっくり話すのを忘れないで。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Got it. We'll have Q&A at the end, and the key takeaway is our launch date.",
+      "lineJp": "了解です。最後に質疑応答があり、重要なポイントは発売日です。"
+    },
+    {
+      "speaker": "Michael",
+      "lineEn": "Great. If you rehearse once more, you'll sound confident.",
+      "lineJp": "素晴らしい。もう一度リハーサルすれば、自信があるように聞こえますよ。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "agenda",
+      "back": "議題（アジェンダ）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "質疑応答",
+      "back": "Q&A",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "rehearse",
+      "back": "リハーサルをする",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "アイコンタクトを取る",
+      "back": "make eye contact",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "slide deck",
+      "back": "スライド資料",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "重要なポイント",
+      "back": "key takeaway",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "本日の議題から始めます。",
+      "correct": "I'd like to start with today's agenda.",
+      "wrong": [
+        "I like to start with today's agenda.",
+        "I will start from today's agenda."
+      ]
+    },
+    {
+      "sentenceJp": "最後に質疑応答があります。",
+      "correct": "We will have Q&A at the end.",
+      "wrong": [
+        "We have Q&A in the end.",
+        "We will have Q&A on the end."
+      ]
+    },
+    {
+      "sentenceJp": "時間があれば、タイムラインを説明します。",
+      "correct": "If we have time, I'll explain the timeline.",
+      "wrong": [
+        "If we have time, I'll explain about the timeline.",
+        "If we have time, I explain the timeline."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Today ___ going to talk about our new project.",
+      "blank": "I'm",
+      "options": [
+        "I'm",
+        "I",
+        "I am",
+        "I be"
+      ]
+    },
+    {
+      "sentence": "Let me ___ the agenda first.",
+      "blank": "explain",
+      "options": [
+        "explain",
+        "explain about",
+        "to explain",
+        "explains"
+      ]
+    },
+    {
+      "sentence": "Please make ___ contact with the audience.",
+      "blank": "eye",
+      "options": [
+        "eye",
+        "eyes",
+        "a eye",
+        "an eye"
+      ]
+    },
+    {
+      "sentence": "We will have Q&A ___ the end.",
+      "blank": "at",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c2-01",
+  "lessonNumber": 1,
+  "title": "Making Plans",
+  "titleJp": "予定を立てる",
+  "goal": "I can listen to and understand people making plans in social situations.",
+  "goalJp": "社交の場面で予定を立てる会話を聞いて理解できる。",
+  "lessonType": "LISTENING",
+  "vocabulary": [
+    {
+      "word": "make plans",
+      "wordJp": "予定を立てる",
+      "pronunciation": "meɪk plænz",
+      "exampleEn": "Let's make plans for the weekend.",
+      "exampleJp": "週末の予定を立てましょう。"
+    },
+    {
+      "word": "check my schedule",
+      "wordJp": "予定を確認する",
+      "pronunciation": "tʃɛk maɪ ˈskɛdʒuːl",
+      "exampleEn": "I'm going to check my schedule and text you.",
+      "exampleJp": "予定を確認してメッセージします。"
+    },
+    {
+      "word": "be available",
+      "wordJp": "空いている／都合がつく",
+      "pronunciation": "bi əˈveɪləbəl",
+      "exampleEn": "Are you available on Thursday?",
+      "exampleJp": "木曜日は空いていますか？"
+    },
+    {
+      "word": "meet up",
+      "wordJp": "会う／集まる",
+      "pronunciation": "miːt ʌp",
+      "exampleEn": "We can meet up after work.",
+      "exampleJp": "仕事の後に会えます。"
+    },
+    {
+      "word": "rain check",
+      "wordJp": "また今度にする",
+      "pronunciation": "reɪn tʃɛk",
+      "exampleEn": "Can I take a rain check on dinner?",
+      "exampleJp": "夕食はまた今度でもいいですか？"
+    },
+    {
+      "word": "reschedule",
+      "wordJp": "予定を変更する",
+      "pronunciation": "ˌriːˈskɛdʒuːl",
+      "exampleEn": "Can we reschedule for next Friday?",
+      "exampleJp": "来週の金曜日に変更できますか？"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "Use the present continuous to talk about fixed future arrangements (be + -ing). Use 'be going to' for plans or intentions without a fixed arrangement.",
+    "ruleJp": "確定した近い未来の予定には現在進行形（be + -ing）を使います。まだ確定していない意図・計画には be going to を使います。",
+    "examples": [
+      {
+        "en": "We're meeting at 7 p.m. this Friday.",
+        "jp": "私たちは今週金曜の午後7時に会う予定です。"
+      },
+      {
+        "en": "I'm going to check my schedule tonight.",
+        "jp": "私は今夜スケジュールを確認するつもりです。"
+      },
+      {
+        "en": "Kenji isn't coming on Sunday; he's working late.",
+        "jp": "健司は日曜日は来ません。遅くまで働く予定です。"
+      }
+    ]
+  },
+  "context": "Saori and Nick are making weekend plans over the phone.",
+  "contextJp": "サオリとニックは電話で週末の予定を立てています。",
+  "dialogue": [
+    {
+      "speaker": "Nick",
+      "lineEn": "Hey Saori, are you free on Saturday evening?",
+      "lineJp": "ねえサオリ、土曜の夜は空いてる？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Maybe. I'm going to check my schedule after work.",
+      "lineJp": "たぶん。仕事の後に予定を確認するつもりです。"
+    },
+    {
+      "speaker": "Nick",
+      "lineEn": "No problem. We're meeting some friends at a new ramen place at seven.",
+      "lineJp": "大丈夫。7時に新しいラーメン屋で友だちと会う予定なんだ。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Sounds good! If I can't make it, can I take a rain check?",
+      "lineJp": "いいね！もし行けなかったら、また今度でもいい？"
+    },
+    {
+      "speaker": "Nick",
+      "lineEn": "Sure. If Saturday doesn't work, we can reschedule for Sunday.",
+      "lineJp": "もちろん。土曜日が無理なら、日曜日に変更できるよ。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Okay, I'll text you in an hour to confirm.",
+      "lineJp": "わかった。1時間後に確認のメッセージを送るね。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "make plans",
+      "back": "予定を立てる",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "空いている（都合がつく）",
+      "back": "be available",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "meet up",
+      "back": "会う／集まる",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "予定を変更する",
+      "back": "reschedule",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "rain check",
+      "back": "また今度にする",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "予定を確認する",
+      "back": "check my schedule",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "土曜日は空いていますか？",
+      "correct": "Are you free on Saturday?",
+      "wrong": [
+        "Are you free in Saturday?",
+        "Do you free on Saturday?"
+      ]
+    },
+    {
+      "sentenceJp": "7時に会って映画を見ましょう。",
+      "correct": "Let's meet at seven and watch a movie.",
+      "wrong": [
+        "Let's meet seven and watch a movie.",
+        "Let's we meet at seven and watch a movie."
+      ]
+    },
+    {
+      "sentenceJp": "私は今夜スケジュールを確認するつもりです。",
+      "correct": "I'm going to check my schedule tonight.",
+      "wrong": [
+        "I am check my schedule tonight.",
+        "I check my schedule tonight."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "We ___ at 7 p.m. on Friday.",
+      "blank": "are meeting",
+      "options": [
+        "are meeting",
+        "meet",
+        "are meet",
+        "meeting"
+      ]
+    },
+    {
+      "sentence": "I'm going to ___ my schedule tonight.",
+      "blank": "check",
+      "options": [
+        "check",
+        "checked",
+        "checking",
+        "to check"
+      ]
+    },
+    {
+      "sentence": "Are you free ___ Sunday?",
+      "blank": "on",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "for"
+      ]
+    },
+    {
+      "sentence": "Saori ___ coming if she has to work late.",
+      "blank": "isn't",
+      "options": [
+        "isn't",
+        "don't",
+        "not",
+        "doesn't"
+      ]
+    }
+  ]
+}

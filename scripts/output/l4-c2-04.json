@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c2-04",
+  "lessonNumber": 4,
+  "title": "Invitations",
+  "titleJp": "招待",
+  "goal": "I can invite someone, accept or decline politely, and suggest another time.",
+  "goalJp": "相手を誘い、丁寧に承諾・断り、別の時間を提案できる。",
+  "lessonType": "SPEAKING",
+  "vocabulary": [
+    {
+      "word": "invite",
+      "wordJp": "招待する",
+      "pronunciation": "ɪnˈvaɪt",
+      "exampleEn": "I'd like to invite you to my party.",
+      "exampleJp": "パーティーにあなたを招待したいです。"
+    },
+    {
+      "word": "be free",
+      "wordJp": "（予定が）空いている",
+      "pronunciation": "biː friː",
+      "exampleEn": "Are you free next Friday?",
+      "exampleJp": "来週の金曜日は空いていますか？"
+    },
+    {
+      "word": "join us",
+      "wordJp": "参加する／ご一緒する",
+      "pronunciation": "dʒɔɪn ʌs",
+      "exampleEn": "Would you like to join us for dinner?",
+      "exampleJp": "夕食にご一緒しませんか？"
+    },
+    {
+      "word": "make it",
+      "wordJp": "都合をつけて来る",
+      "pronunciation": "meɪk ɪt",
+      "exampleEn": "Can you make it to the meeting at 6?",
+      "exampleJp": "6時の会議に来られますか？"
+    },
+    {
+      "word": "rain check",
+      "wordJp": "また今度にする",
+      "pronunciation": "reɪn tʃɛk",
+      "exampleEn": "Can I take a rain check on tonight?",
+      "exampleJp": "今夜はまた今度にしてもいいですか？"
+    },
+    {
+      "word": "host",
+      "wordJp": "主催者／主催する",
+      "pronunciation": "hoʊst",
+      "exampleEn": "Kenji will host the event at his office.",
+      "exampleJp": "ケンジがオフィスでイベントを主催します。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "For polite invitations, use: 'Would you like to + base verb?' or 'How about + -ing?'. To decline softly, use 'I'm afraid + clause' or 'I can't make it + time/day', and suggest an alternative with 'How about/Maybe + time/day?'.",
+    "ruleJp": "丁寧に誘うときは「Would you like to + 動詞の原形?」や「How about + 動名詞?」を使います。やんわり断るときは「I'm afraid + 文」や「I can't make it + 時間/曜日」を使い、「How about / Maybe + 時間/曜日?」で代案を提案します。",
+    "examples": [
+      {
+        "en": "Would you like to come to our get-together on Saturday?",
+        "jp": "土曜日の集まりに来ませんか。"
+      },
+      {
+        "en": "How about meeting at 7 p.m.?",
+        "jp": "午後7時に会うのはどうですか。"
+      },
+      {
+        "en": "I'm afraid I can't make it on Saturday. How about Sunday instead?",
+        "jp": "すみませんが、土曜日は都合がつきません。代わりに日曜日はどうですか。"
+      }
+    ]
+  },
+  "context": "Saori is organizing a casual dinner and wants to invite Daniel.",
+  "contextJp": "サオリはカジュアルな夕食会を企画しており、ダニエルを誘いたがっています。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Hey Daniel, would you like to join us for a small get-together this Saturday?",
+      "lineJp": "ねえダニエル、今週の土曜日にちょっとした集まりに参加しませんか？"
+    },
+    {
+      "speaker": "Daniel",
+      "lineEn": "That sounds great! What time does it start?",
+      "lineJp": "いいですね！何時に始まりますか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "How about meeting at 6 p.m. at Kanda Station?",
+      "lineJp": "午後6時に神田駅で会うのはどうですか？"
+    },
+    {
+      "speaker": "Daniel",
+      "lineEn": "I might not make it by six. Could we meet a bit later?",
+      "lineJp": "6時までに行けないかもしれません。少し遅く会えますか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "No problem. Let's meet at 6:30 then.",
+      "lineJp": "大丈夫です。では6時30分に会いましょう。"
+    },
+    {
+      "speaker": "Daniel",
+      "lineEn": "Perfect. I'll be there. Thanks for the invitation!",
+      "lineJp": "完璧です。行きます。誘ってくれてありがとう！"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "invite",
+      "back": "招待する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "（予定が）空いている",
+      "back": "be free",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "join us",
+      "back": "参加する／ご一緒する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "都合をつけて来る",
+      "back": "make it",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "rain check",
+      "back": "また今度にする",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "主催者／主催する",
+      "back": "host",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "土曜日に私たちの集まりに来ませんか。",
+      "correct": "Would you like to join us on Saturday?",
+      "wrong": [
+        "Do you like to join us on Saturday?",
+        "Would you like join us on Saturday?"
+      ]
+    },
+    {
+      "sentenceJp": "7時に会うのはどうですか。",
+      "correct": "How about meeting at 7?",
+      "wrong": [
+        "How about meet at 7?",
+        "How about to meet at 7?"
+      ]
+    },
+    {
+      "sentenceJp": "申し訳ないですが、今日は都合がつきません。",
+      "correct": "I'm afraid I can't make it today.",
+      "wrong": [
+        "I'm afraid I can't make today.",
+        "I can't go to today."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Would you like ___ come to my place?",
+      "blank": "to",
+      "options": [
+        "to",
+        "for",
+        "at",
+        "-"
+      ]
+    },
+    {
+      "sentence": "Are you ___ this Friday evening?",
+      "blank": "free",
+      "options": [
+        "free",
+        "freely",
+        "open",
+        "empty"
+      ]
+    },
+    {
+      "sentence": "I'm afraid I can't ___ it on Tuesday.",
+      "blank": "make",
+      "options": [
+        "make",
+        "do",
+        "go",
+        "making"
+      ]
+    },
+    {
+      "sentence": "How about ___ dinner at 6:30?",
+      "blank": "having",
+      "options": [
+        "having",
+        "to have",
+        "have",
+        "has"
+      ]
+    }
+  ]
+}

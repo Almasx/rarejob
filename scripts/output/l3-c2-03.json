@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l3-c2-03",
+  "lessonNumber": 3,
+  "title": "Asking for Directions",
+  "titleJp": "道をたずねる",
+  "goal": "I can ask for and give simple directions politely.",
+  "goalJp": "丁寧に道をたずねて、簡単に道案内ができる。",
+  "lessonType": "SPEAKING",
+  "vocabulary": [
+    {
+      "word": "go straight",
+      "wordJp": "まっすぐ行く",
+      "pronunciation": "ɡoʊ streɪt",
+      "exampleEn": "Go straight for two blocks.",
+      "exampleJp": "2ブロックまっすぐ行ってください。"
+    },
+    {
+      "word": "turn right",
+      "wordJp": "右に曲がる",
+      "pronunciation": "tɜːrn raɪt",
+      "exampleEn": "Turn right at the bank.",
+      "exampleJp": "銀行で右に曲がってください。"
+    },
+    {
+      "word": "turn left",
+      "wordJp": "左に曲がる",
+      "pronunciation": "tɜːrn lɛft",
+      "exampleEn": "Turn left at the traffic light.",
+      "exampleJp": "信号で左に曲がってください。"
+    },
+    {
+      "word": "traffic light",
+      "wordJp": "信号",
+      "pronunciation": "ˈtræfɪk laɪt",
+      "exampleEn": "There is a traffic light at the corner.",
+      "exampleJp": "角に信号があります。"
+    },
+    {
+      "word": "block",
+      "wordJp": "ブロック（街区）",
+      "pronunciation": "blɑːk",
+      "exampleEn": "It's three blocks from here.",
+      "exampleJp": "ここから3ブロックです。"
+    },
+    {
+      "word": "across from",
+      "wordJp": "〜の向かいに",
+      "pronunciation": "əˈkrɔːs frəm",
+      "exampleEn": "The station is across from the park.",
+      "exampleJp": "駅は公園の向かいにあります。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "To ask politely for directions, use 'Could you...?' or 'How do I get to ...?'. To give directions, use imperatives (base-form verbs): 'Go...', 'Turn...'. Use place prepositions: 'across from', 'next to', 'between A and B'.",
+    "ruleJp": "道を丁寧にたずねるときは「Could you...?」や「How do I get to ...?」を使います。道案内には命令形（動詞の原形）「Go...」「Turn...」を使います。位置を説明するときは「across from（〜の向かい）」「next to（〜の隣）」「between A and B（AとBの間）」を使います。",
+    "examples": [
+      {
+        "en": "Could you tell me how to get to the station?",
+        "jp": "駅へはどうやって行けばいいか教えていただけますか。"
+      },
+      {
+        "en": "Go straight and turn left at the traffic light.",
+        "jp": "まっすぐ行って、信号で左に曲がってください。"
+      },
+      {
+        "en": "It's between the bank and the post office.",
+        "jp": "銀行と郵便局の間にあります。"
+      }
+    ]
+  },
+  "context": "Saori and Ben are visiting Osaka and looking for the subway entrance.",
+  "contextJp": "サオリとベンは大阪を訪れており、地下鉄の入口を探しています。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Excuse me. Could you tell me how to get to Namba Station?",
+      "lineJp": "すみません。なんば駅へはどうやって行けばいいですか。"
+    },
+    {
+      "speaker": "Ben",
+      "lineEn": "Sure. Go straight for two blocks.",
+      "lineJp": "いいですよ。2ブロックまっすぐ行ってください。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Then turn right at the traffic light?",
+      "lineJp": "それから信号で右に曲がるんですか？"
+    },
+    {
+      "speaker": "Ben",
+      "lineEn": "Yes, turn right, and the station is across from a big bookstore.",
+      "lineJp": "はい、右に曲がると、駅は大きな本屋の向かいにあります。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Is it far from here?",
+      "lineJp": "ここから遠いですか？"
+    },
+    {
+      "speaker": "Ben",
+      "lineEn": "Not really. It's about five minutes on foot.",
+      "lineJp": "そんなに遠くないですよ。徒歩で5分くらいです。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "go straight",
+      "back": "まっすぐ行く",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "右に曲がる",
+      "back": "turn right",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "traffic light",
+      "back": "信号",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "〜の向かいに",
+      "back": "across from",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "turn left",
+      "back": "左に曲がる",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "ブロック（街区）",
+      "back": "block",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "すみません、駅へはどうやって行けばいいですか。",
+      "correct": "Excuse me, how do I get to the station?",
+      "wrong": [
+        "Excuse me, how do I go to the station?",
+        "Excuse me, how I get to the station?"
+      ]
+    },
+    {
+      "sentenceJp": "信号で左に曲がってください。",
+      "correct": "Turn left at the traffic light.",
+      "wrong": [
+        "Turn left on the traffic light.",
+        "Turn left at traffic light."
+      ]
+    },
+    {
+      "sentenceJp": "銀行と郵便局の間にあります。",
+      "correct": "It's between the bank and the post office.",
+      "wrong": [
+        "It's between of the bank and the post office.",
+        "It's among the bank and the post office."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Could you ___ me how to get to the museum?",
+      "blank": "tell",
+      "options": [
+        "tell",
+        "to tell",
+        "tells",
+        "say"
+      ]
+    },
+    {
+      "sentence": "Go ___ for two blocks.",
+      "blank": "straight",
+      "options": [
+        "straight",
+        "straightly",
+        "aheads",
+        "forward"
+      ]
+    },
+    {
+      "sentence": "It's ___ the bank and the post office.",
+      "blank": "between",
+      "options": [
+        "between",
+        "among",
+        "next",
+        "beside"
+      ]
+    },
+    {
+      "sentence": "Then ___ right at the traffic light.",
+      "blank": "turn",
+      "options": [
+        "turn",
+        "turns",
+        "to turn",
+        "turning"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l3-c2-01",
+  "lessonNumber": 1,
+  "title": "At the Airport",
+  "titleJp": "空港で",
+  "goal": "I can listen to and understand common conversations at the airport.",
+  "goalJp": "空港でのよくある会話を聞いて理解できるようになる。",
+  "lessonType": "LISTENING",
+  "vocabulary": [
+    {
+      "word": "passport",
+      "wordJp": "パスポート",
+      "pronunciation": "ˈpæspɔːrt",
+      "exampleEn": "Please show your passport.",
+      "exampleJp": "パスポートを見せてください。"
+    },
+    {
+      "word": "boarding pass",
+      "wordJp": "搭乗券",
+      "pronunciation": "ˈbɔːrdɪŋ pæs",
+      "exampleEn": "I can't find my boarding pass.",
+      "exampleJp": "搭乗券が見つかりません。"
+    },
+    {
+      "word": "check in",
+      "wordJp": "チェックインする",
+      "pronunciation": "tʃek ɪn",
+      "exampleEn": "We need to check in online.",
+      "exampleJp": "オンラインでチェックインする必要があります。"
+    },
+    {
+      "word": "carry-on bag",
+      "wordJp": "機内持ち込み手荷物",
+      "pronunciation": "ˈkæri ɑːn bæg",
+      "exampleEn": "You can take one carry-on bag.",
+      "exampleJp": "機内持ち込み手荷物は1つ持ち込めます。"
+    },
+    {
+      "word": "security check",
+      "wordJp": "保安検査",
+      "pronunciation": "sɪˈkjʊrəti tʃek",
+      "exampleEn": "Take off your shoes at the security check.",
+      "exampleJp": "保安検査で靴を脱いでください。"
+    },
+    {
+      "word": "gate",
+      "wordJp": "搭乗口",
+      "pronunciation": "ɡeɪt",
+      "exampleEn": "Our gate is B12.",
+      "exampleJp": "私たちの搭乗口はB12です。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "Use have to/don't have to to talk about rules and necessity. Use have to + base verb. Don't have to means 'it is not necessary.' Questions: Do/Does + subject + have to? For he/she/it, use has to.",
+    "ruleJp": "規則や必要性について話すときは have to / don't have to を使います。have to + 動詞の原形。don't have to は「〜する必要はない」という意味です。疑問文は Do/Does + 主語 + have to?。he/she/it には has to を使います。",
+    "examples": [
+      {
+        "en": "You have to show your passport.",
+        "jp": "パスポートを見せなければなりません。"
+      },
+      {
+        "en": "She has to check in before 9.",
+        "jp": "彼女は9時前にチェックインしなければなりません。"
+      },
+      {
+        "en": "We don't have to print the ticket.",
+        "jp": "チケットを印刷する必要はありません。"
+      }
+    ]
+  },
+  "context": "Saori and Alex are at Haneda Airport, getting ready to fly to Singapore.",
+  "contextJp": "サオリとアレックスは羽田空港で、シンガポール行きのフライトに乗る準備をしています。",
+  "dialogue": [
+    {
+      "speaker": "Alex",
+      "lineEn": "Saori, do we have to check in here?",
+      "lineJp": "サオリ、ここでチェックインしなければなりませんか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes, this is the airline's check-in counter.",
+      "lineJp": "はい、ここがその航空会社のチェックインカウンターです。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "I have my passport, but I can't find my boarding pass.",
+      "lineJp": "パスポートはありますが、搭乗券が見つかりません。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "No problem. You can get a new one. Show your passport and booking number.",
+      "lineJp": "大丈夫。新しいものを発行してもらえます。パスポートと予約番号を見せてください。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "After check-in, do we have to go to security check right away?",
+      "lineJp": "チェックインの後、すぐに保安検査に行かなければなりませんか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes. Our gate is B12, and boarding starts at 8:30.",
+      "lineJp": "はい。搭乗口はB12で、8時30分に搭乗開始です。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "boarding pass",
+      "back": "搭乗券",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "搭乗口",
+      "back": "gate",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "check in",
+      "back": "チェックインする",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "保安検査",
+      "back": "security check",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "carry-on bag",
+      "back": "機内持ち込み手荷物",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "パスポート",
+      "back": "passport",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "パスポートを見せなければなりませんか？",
+      "correct": "Do I have to show my passport?",
+      "wrong": [
+        "Have I to show my passport?",
+        "Do I have to shows my passport?"
+      ]
+    },
+    {
+      "sentenceJp": "私たちはここでチェックインしません。",
+      "correct": "We don't check in here.",
+      "wrong": [
+        "We doesn't check in here.",
+        "We aren't check in here."
+      ]
+    },
+    {
+      "sentenceJp": "搭乗口B12はどこですか？",
+      "correct": "Where is gate B12?",
+      "wrong": [
+        "Where gate B12 is?",
+        "Where is the gate B12?"
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "You ___ show your passport at security.",
+      "blank": "have to",
+      "options": [
+        "have to",
+        "has to",
+        "must to",
+        "have"
+      ]
+    },
+    {
+      "sentence": "She ___ in online before 8 p.m.",
+      "blank": "checks",
+      "options": [
+        "checks",
+        "check",
+        "checking",
+        "checkes"
+      ]
+    },
+    {
+      "sentence": "Where ___ the gate for Flight 23?",
+      "blank": "is",
+      "options": [
+        "is",
+        "are",
+        "do",
+        "does"
+      ]
+    },
+    {
+      "sentence": "This is my boarding ___.",
+      "blank": "pass",
+      "options": [
+        "pass",
+        "passport",
+        "past",
+        "passed"
+      ]
+    }
+  ]
+}

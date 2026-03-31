@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l3-c2-05",
+  "lessonNumber": 5,
+  "title": "Travel & Getting Around — Review",
+  "titleJp": "旅行と移動：復習",
+  "goal": "I can review and use travel phrases to ask for directions, buy tickets, and talk about plans.",
+  "goalJp": "道をたずねる、切符を買う、計画について話す表現を復習して使えるようになる。",
+  "lessonType": "REVIEW",
+  "vocabulary": [
+    {
+      "word": "platform",
+      "wordJp": "プラットホーム（番線）",
+      "pronunciation": "ˈplætˌfɔːrm",
+      "exampleEn": "Our train leaves from Platform 2.",
+      "exampleJp": "電車は2番線から出ます。"
+    },
+    {
+      "word": "transfer",
+      "wordJp": "乗り換える",
+      "pronunciation": "trænsˈfɜːr",
+      "exampleEn": "We transfer at Shinjuku.",
+      "exampleJp": "私たちは新宿で乗り換えます。"
+    },
+    {
+      "word": "fare",
+      "wordJp": "運賃",
+      "pronunciation": "fɛr",
+      "exampleEn": "The bus fare is 210 yen.",
+      "exampleJp": "バスの運賃は210円です。"
+    },
+    {
+      "word": "timetable",
+      "wordJp": "時刻表",
+      "pronunciation": "ˈtaɪmˌteɪbəl",
+      "exampleEn": "I checked the timetable online.",
+      "exampleJp": "オンラインで時刻表を確認しました。"
+    },
+    {
+      "word": "across from",
+      "wordJp": "〜の向かいに",
+      "pronunciation": "əˈkrɔːs frəm",
+      "exampleEn": "The station is across from the hotel.",
+      "exampleJp": "駅はホテルの向かいにあります。"
+    },
+    {
+      "word": "go straight",
+      "wordJp": "まっすぐ進む",
+      "pronunciation": "ɡoʊ streɪt",
+      "exampleEn": "Go straight for two blocks.",
+      "exampleJp": "2ブロックまっすぐ進んでください。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "To ask for directions politely, use patterns like “Could you tell me how to get to…?” or “How do I get to…?”. To give directions, use imperatives (Go/Turn/Take) and prepositions of place (next to, across from, between A and B, at the corner). Use at/in/on correctly with places: at the station, on Line 2, in front of the museum.",
+    "ruleJp": "丁寧に道をたずねるときは “Could you tell me how to get to …?” や “How do I get to …?” を使います。道案内では命令形（Go/Turn/Take）と場所の前置詞（next to, across from, between A and B, at the corner）を使います。場所には at/in/on を適切に使います（例：at the station, on Line 2, in front of the museum）。",
+    "examples": [
+      {
+        "en": "Could you tell me how to get to the station?",
+        "jp": "駅への行き方を教えていただけますか。"
+      },
+      {
+        "en": "Go straight and turn right at the second light.",
+        "jp": "まっすぐ進んで、2つ目の信号で右に曲がってください。"
+      },
+      {
+        "en": "The museum is across from the park.",
+        "jp": "博物館は公園の向かいにあります。"
+      }
+    ]
+  },
+  "context": "Saori and Alex are in Osaka, reviewing their travel plans and asking for directions to a ferry terminal.",
+  "contextJp": "サオリとアレックスは大阪で、旅行計画を復習し、フェリーターミナルへの行き方を尋ねています。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Alex, are we going to take the subway or the bus to the ferry terminal?",
+      "lineJp": "アレックス、フェリーターミナルへは地下鉄とバス、どちらで行く予定？"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Let's take the subway. We need to transfer at Namba and go to Platform 3.",
+      "lineJp": "地下鉄にしよう。難波で乗り換えて、3番線に行くよ。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "How long does it take from here?",
+      "lineJp": "ここからどのくらいかかる？"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "About twenty minutes. After the gate, go straight; the subway entrance is across from the bank.",
+      "lineJp": "だいたい20分。改札を出たらまっすぐ進んで、地下鉄の入口は銀行の向かいだよ。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Okay. Two round-trip tickets, please—how much is the fare?",
+      "lineJp": "わかった。往復券を2枚ください。運賃はいくらですか？"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "It's 560 yen each. I already checked the timetable.",
+      "lineJp": "一人560円だよ。時刻表はもう確認したから大丈夫。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "platform",
+      "back": "プラットホーム（番線）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "時刻表",
+      "back": "timetable",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "across from",
+      "back": "〜の向かいに",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "乗り換える",
+      "back": "transfer",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "round-trip ticket",
+      "back": "往復券",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "運賃",
+      "back": "fare",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "駅は銀行の向かいにあります。",
+      "correct": "The station is across from the bank.",
+      "wrong": [
+        "The station is across the bank.",
+        "Station is across from bank."
+      ]
+    },
+    {
+      "sentenceJp": "新宿で地下鉄に乗り換えてください。",
+      "correct": "Please transfer to the subway at Shinjuku.",
+      "wrong": [
+        "Please transfer subway at Shinjuku.",
+        "Please change to subway at Shinjuku."
+      ]
+    },
+    {
+      "sentenceJp": "渋谷までどのくらいかかりますか？",
+      "correct": "How long does it take to get to Shibuya?",
+      "wrong": [
+        "How long does it take to Shibuya?",
+        "How long time does it take to get Shibuya?"
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "Could you ___ me how to get to the museum?",
+      "blank": "tell",
+      "options": [
+        "tell",
+        "to tell",
+        "telling",
+        "says"
+      ]
+    },
+    {
+      "sentence": "Go ___ and turn left at the station.",
+      "blank": "straight",
+      "options": [
+        "straight",
+        "strait",
+        "straightly",
+        "straight ahead"
+      ]
+    },
+    {
+      "sentence": "You need to ___ at Platform 3.",
+      "blank": "transfer",
+      "options": [
+        "transfer",
+        "transfers",
+        "to transfer",
+        "transfer to"
+      ]
+    },
+    {
+      "sentence": "How much is the ___ to Kyoto?",
+      "blank": "fare",
+      "options": [
+        "fare",
+        "fee",
+        "price",
+        "cost"
+      ]
+    }
+  ]
+}

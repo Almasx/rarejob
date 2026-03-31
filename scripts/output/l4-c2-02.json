@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c2-02",
+  "lessonNumber": 2,
+  "title": "At a Restaurant",
+  "titleJp": "レストランで",
+  "goal": "I can listen to and understand conversations for ordering and paying at a restaurant.",
+  "goalJp": "レストランでの注文や会計の会話を聞いて理解できるようになる。",
+  "lessonType": "LISTENING",
+  "vocabulary": [
+    {
+      "word": "reservation",
+      "wordJp": "予約",
+      "pronunciation": "ˌrɛzərˈveɪʃən",
+      "exampleEn": "We have a reservation under Tanaka.",
+      "exampleJp": "田中の名前で予約があります。"
+    },
+    {
+      "word": "menu",
+      "wordJp": "メニュー",
+      "pronunciation": "ˈmɛnju",
+      "exampleEn": "Could I see the menu, please?",
+      "exampleJp": "メニューを見せていただけますか？"
+    },
+    {
+      "word": "order",
+      "wordJp": "注文する",
+      "pronunciation": "ˈɔːrdər",
+      "exampleEn": "I'd like to order the pasta.",
+      "exampleJp": "パスタを注文したいです。"
+    },
+    {
+      "word": "appetizer",
+      "wordJp": "前菜",
+      "pronunciation": "ˈæpɪtaɪzər",
+      "exampleEn": "Let's share an appetizer.",
+      "exampleJp": "前菜をシェアしましょう。"
+    },
+    {
+      "word": "main course",
+      "wordJp": "メイン料理",
+      "pronunciation": "meɪn kɔːrs",
+      "exampleEn": "What is today's main course?",
+      "exampleJp": "今日のメイン料理は何ですか。"
+    },
+    {
+      "word": "the bill",
+      "wordJp": "お会計",
+      "pronunciation": "ðə bɪl",
+      "exampleEn": "Could we have the bill, please?",
+      "exampleJp": "お会計をお願いします。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "Use 'would like' to make polite requests or orders in restaurants. Form: Subject + would like + noun/to-infinitive. Questions: Would you like ...? Use 'I'd like ...' to order politely.",
+    "ruleJp": "レストランで丁寧に頼むときは“would like”を使います。形：主語 + would like + 名詞／不定詞(to + 動詞)。疑問文：Would you like ...? 自分の希望は “I'd like ...” を使います。",
+    "examples": [
+      {
+        "en": "I'd like the grilled salmon, please.",
+        "jp": "グリルサーモンをお願いします。"
+      },
+      {
+        "en": "Would you like still or sparkling water?",
+        "jp": "炭酸なしの水と炭酸水、どちらになさいますか？"
+      },
+      {
+        "en": "She would like to sit by the window.",
+        "jp": "彼女は窓際に座りたいです。"
+      }
+    ]
+  },
+  "context": "Saori is dining with a colleague, and the server Alex comes to take her order at a busy Italian restaurant.",
+  "contextJp": "サオリは同僚と食事中で、にぎやかなイタリア料理店で店員のアレックスが注文を取りに来ます。",
+  "dialogue": [
+    {
+      "speaker": "Alex",
+      "lineEn": "Good evening. Do you have a reservation?",
+      "lineJp": "こんばんは。ご予約はございますか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes, a table for two under Tanaka.",
+      "lineJp": "はい、田中の名前で2名です。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Great. Here's the menu. Can I get you something to drink?",
+      "lineJp": "かしこまりました。メニューです。お飲み物はいかがですか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "I'd like still water and a glass of red wine, please.",
+      "lineJp": "お水（炭酸なし）と赤ワインを一杯お願いします。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Of course. Are you ready to order?",
+      "lineJp": "かしこまりました。ご注文はお決まりですか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes. I'd like the tomato bruschetta to start and the seafood pasta as my main.",
+      "lineJp": "はい。前菜にトマトのブルスケッタ、メインにシーフードパスタをお願いします。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "reservation",
+      "back": "予約",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "メイン料理",
+      "back": "main course",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "order",
+      "back": "注文する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "お会計",
+      "back": "the bill",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "appetizer",
+      "back": "前菜",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "メニュー",
+      "back": "menu",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "田中の名前で予約があります。",
+      "correct": "We have a reservation under Tanaka.",
+      "wrong": [
+        "We has a reservation under Tanaka.",
+        "We have reservation under Tanaka."
+      ]
+    },
+    {
+      "sentenceJp": "おすすめは何ですか。",
+      "correct": "What do you recommend?",
+      "wrong": [
+        "What do you recommend me?",
+        "What is your recommend?"
+      ]
+    },
+    {
+      "sentenceJp": "お会計をお願いします。",
+      "correct": "Could we have the bill, please?",
+      "wrong": [
+        "Can we have bill, please?",
+        "We want the bill, please."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "___ we have a table by the window?",
+      "blank": "Could",
+      "options": [
+        "Could",
+        "Can",
+        "Do",
+        "Are"
+      ]
+    },
+    {
+      "sentence": "I'd ___ to try the chef's special.",
+      "blank": "like",
+      "options": [
+        "like",
+        "want",
+        "likes",
+        "liking"
+      ]
+    },
+    {
+      "sentence": "She ___ a reservation at seven.",
+      "blank": "has",
+      "options": [
+        "has",
+        "have",
+        "is",
+        "do"
+      ]
+    },
+    {
+      "sentence": "What do you ___ for a main course?",
+      "blank": "recommend",
+      "options": [
+        "recommend",
+        "recommends",
+        "recommendation",
+        "recommended"
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@ import { cn, shuffleArray } from "@/lib/utils"
 
 type FillBlankProps = {
   data: FillBlankItem
-  onAnswer: (correct: boolean) => void
+  onAnswer: (correct: boolean, selected: string) => void
 }
 
 const letters = ["a", "b", "c", "d"]
@@ -24,7 +24,7 @@ export function FillBlank({ data, onAnswer }: FillBlankProps) {
     if (selected) return
     setSelected(choice)
     const correct = choice === data.blank
-    setTimeout(() => onAnswer(correct), correct ? 2000 : 4000)
+    setTimeout(() => onAnswer(correct, choice), correct ? 2000 : 4000)
   }
 
   const parts = data.sentence.split("___")

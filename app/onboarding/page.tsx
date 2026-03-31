@@ -5,11 +5,12 @@ import { api } from "@/convex/_generated/api"
 import { useMutation, useQuery } from "convex/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { atom, useAtom, useAtomValue } from "jotai"
-import { Check } from "lucide-react"
+import { Check, MessageCircle, User, Briefcase, Coffee } from "lucide-react"
 import { useRouter } from "next/navigation"
 import useMeasure from "react-use-measure"
 
 const stepAtom = atom(0)
+const selectedGoalsAtom = atom<string[]>([])
 const selectedLevelAtom = atom<number | null>(null)
 const selectedChapterAtom = atom<number | null>(null)
 
@@ -20,8 +21,9 @@ export default function OnboardingPage() {
   const currentView = (() => {
     switch (step) {
       case 0: return <WelcomeStep />
-      case 1: return <LevelStep />
-      case 2: return <ChapterStep />
+      case 1: return <GoalsStep />
+      case 2: return <LevelStep />
+      case 3: return <ChapterStep />
     }
   })()
 
@@ -65,8 +67,64 @@ function WelcomeStep() {
 
       <h2 className="mb-2">Your daily English drills</h2>
       <p className="text-text-secondary text-base leading-relaxed">
-        Flashcards, translation, and fill-in-the-blank — 5 minutes a day, matched to your chapter.
+        Shadowing, flashcards, translation, and AI chat — 5 minutes a day, matched to your chapter.
       </p>
+    </div>
+  )
+}
+
+const GOALS = [
+  { value: "speaking", label: "Speaking to people", icon: MessageCircle },
+  { value: "self", label: "Talking about myself", icon: User },
+  { value: "work", label: "Work conversations", icon: Briefcase },
+  { value: "daily", label: "Daily life", icon: Coffee },
+]
+
+function GoalsStep() {
+  const [selectedGoals, setSelectedGoals] = useAtom(selectedGoalsAtom)
+
+  const toggleGoal = (value: string) => {
+    setSelectedGoals((prev) =>
+      prev.includes(value) ? prev.filter((g) => g !== value) : [...prev, value]
+    )
+  }
+
+  return (
+    <div className="p-6">
+      <h2 className="mb-1">What do you want to practice?</h2>
+      <p className="text-text-secondary text-base mb-4">
+        Pick what matters most to you.
+      </p>
+      <div className="divide-y divide-border">
+        {GOALS.map((goal) => {
+          const selected = selectedGoals.includes(goal.value)
+          const Icon = goal.icon
+          return (
+            <button
+              key={goal.value}
+              className="w-full flex items-center gap-3 py-4 last:pb-0 text-left active:opacity-70 transition-opacity"
+              onClick={() => toggleGoal(goal.value)}
+            >
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${selected ? "bg-accent/10" : "bg-fill-empty"}`}>
+                <Icon size={16} className={selected ? "text-accent" : "text-text-tertiary"} />
+              </div>
+              <span
+                className="flex-1 text-base font-medium transition-colors"
+                style={{ color: selected ? "var(--accent)" : "var(--text-primary)" }}
+              >
+                {goal.label}
+              </span>
+              <motion.div
+                initial={false}
+                animate={{ scale: selected ? 1 : 0, opacity: selected ? 1 : 0 }}
+                transition={spring}
+              >
+                <Check size={18} color="var(--accent)" strokeWidth={2.5} />
+              </motion.div>
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -85,9 +143,10 @@ function LevelStep() {
           <SelectRow
             key={level.value}
             selected={selectedLevel === level.value}
-            onClick={() => setSelectedLevel(level.value)}
+            onClick={() => !level.disabled && setSelectedLevel(level.value)}
+            disabled={level.disabled}
           >
-            <span>{level.label}</span>
+            <span className={level.disabled ? "text-text-tertiary" : ""}>{level.label}</span>
             <span className="text-text-tertiary font-normal ml-2 text-caption">
               {level.desc}
             </span>
@@ -152,15 +211,18 @@ function SelectRow({
   selected,
   onClick,
   children,
+  disabled,
 }: {
   selected: boolean
   onClick: () => void
   children: React.ReactNode
+  disabled?: boolean
 }) {
   return (
     <button
-      className="w-full flex items-center justify-between py-4 last:pb-0 text-left active:opacity-70 transition-opacity"
+      className={`w-full flex items-center justify-between py-4 last:pb-0 text-left transition-opacity ${disabled ? "opacity-40 cursor-default" : "active:opacity-70"}`}
       onClick={onClick}
+      disabled={disabled}
     >
       <span
         className="text-base font-medium transition-colors"
@@ -178,9 +240,11 @@ function SelectRow({
     </button>
   )
 }
+
 function BottomActions() {
   const router = useRouter()
   const [step, setStep] = useAtom(stepAtom)
+  const selectedGoals = useAtomValue(selectedGoalsAtom)
   const selectedLevel = useAtomValue(selectedLevelAtom)
   const [selectedChapter, setSelectedChapter] = useAtom(selectedChapterAtom)
 
@@ -193,13 +257,17 @@ function BottomActions() {
   const hasNoChapters = chapters && chapters.length === 0
 
   const handleSetStep = (s: number) => {
-    if (s === 2) setSelectedChapter(null)
+    if (s === 3) setSelectedChapter(null)
     setStep(s)
   }
 
   const handleFinish = async () => {
     if (selectedLevel === null || selectedChapter === null) return
-    await completeOnboarding({ level: selectedLevel, chapter: selectedChapter })
+    await completeOnboarding({
+      level: selectedLevel,
+      chapter: selectedChapter,
+      practiceGoals: selectedGoals.length > 0 ? selectedGoals : undefined,
+    })
     router.replace("/")
   }
 
@@ -223,20 +291,30 @@ function BottomActions() {
       {step === 1 && (
         <Button
           className="flex-1"
-          disabled={selectedLevel === null}
+          disabled={selectedGoals.length === 0}
           onClick={() => handleSetStep(2)}
         >
           Continue
         </Button>
       )}
 
-      {step === 2 && hasNoChapters && (
-        <Button className="flex-1" onClick={() => handleSetStep(1)}>
+      {step === 2 && (
+        <Button
+          className="flex-1"
+          disabled={selectedLevel === null}
+          onClick={() => handleSetStep(3)}
+        >
+          Continue
+        </Button>
+      )}
+
+      {step === 3 && hasNoChapters && (
+        <Button className="flex-1" onClick={() => handleSetStep(2)}>
           Choose a Different Level
         </Button>
       )}
 
-      {step === 2 && !hasNoChapters && (
+      {step === 3 && !hasNoChapters && (
         <Button
           className="flex-1"
           disabled={selectedChapter === null}
@@ -252,9 +330,9 @@ function BottomActions() {
 const spring = { type: "spring" as const, duration: 0.3, bounce: 0 }
 
 const LEVELS = [
-  { value: 3, label: "Level 3", desc: "Jitsuyo Eikaiwa 3" },
-  { value: 4, label: "Level 4", desc: "Jitsuyo Eikaiwa 4" },
-  { value: 5, label: "Level 5", desc: "Jitsuyo Eikaiwa 5" },
+  { value: 3, label: "Level 3", desc: "Jitsuyo Eikaiwa 3", disabled: false },
+  { value: 4, label: "Level 4", desc: "Jitsuyo Eikaiwa 4", disabled: false },
+  { value: 5, label: "Level 5", desc: "Coming soon", disabled: true },
 ]
 
 const FLASHCARDS = [

@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c2-03",
+  "lessonNumber": 3,
+  "title": "Compliments & Small Talk",
+  "titleJp": "褒め言葉とスモールトーク",
+  "goal": "I can give and respond to compliments and start small talk in social situations.",
+  "goalJp": "社交の場面で褒めたり返答したり、スモールトークを始められるようになる。",
+  "lessonType": "SPEAKING",
+  "vocabulary": [
+    {
+      "word": "small talk",
+      "wordJp": "雑談（スモールトーク）",
+      "pronunciation": "smɔl tɔk",
+      "exampleEn": "We made small talk about the weather.",
+      "exampleJp": "天気について雑談しました。"
+    },
+    {
+      "word": "give a compliment",
+      "wordJp": "褒め言葉を言う",
+      "pronunciation": "ɡɪv ə ˈkɑːmpləmənt",
+      "exampleEn": "She gave me a compliment on my presentation.",
+      "exampleJp": "彼女は私の発表を褒めてくれました。"
+    },
+    {
+      "word": "go well with",
+      "wordJp": "〜によく合う",
+      "pronunciation": "ɡoʊ wɛl wɪð",
+      "exampleEn": "Your shoes go well with that dress.",
+      "exampleJp": "あなたの靴はそのドレスによく合います。"
+    },
+    {
+      "word": "break the ice",
+      "wordJp": "緊張をほぐす（場の空気を和らげる）",
+      "pronunciation": "breɪk ði aɪs",
+      "exampleEn": "A joke can help break the ice.",
+      "exampleJp": "冗談は場の空気を和らげるのに役立ちます。"
+    },
+    {
+      "word": "polite",
+      "wordJp": "丁寧な",
+      "pronunciation": "pəˈlaɪt",
+      "exampleEn": "It's polite to say thank you.",
+      "exampleJp": "ありがとうと言うのは丁寧です。"
+    },
+    {
+      "word": "How's it going?",
+      "wordJp": "調子はどうですか？",
+      "pronunciation": "haʊz ɪt ˈɡoʊɪŋ",
+      "exampleEn": "How's it going? I'm Kenji.",
+      "exampleJp": "調子はどうですか？ケンジです。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "To give natural compliments, use these patterns: 1) I like/love + your + noun. 2) It/They look + adjective. Use it for singular items and they for plural items (e.g., shoes). 3) X goes well with Y to show a good match.",
+    "ruleJp": "自然な褒め方には次の型を使います：1) I like/love + your + 名詞。2) It/They look + 形容詞。単数はit、複数（shoesなど）はtheyを使います。3) X goes well with Y（XはYによく合う）。",
+    "examples": [
+      {
+        "en": "I love your jacket. It looks great.",
+        "jp": "あなたのジャケット、素敵ですね。とても似合っています。"
+      },
+      {
+        "en": "Your shoes look comfortable. They go well with your suit.",
+        "jp": "あなたの靴は履き心地がよさそうですね。スーツによく合っています。"
+      },
+      {
+        "en": "I like your glasses. They look good on you.",
+        "jp": "眼鏡いいですね。よく似合っています。"
+      }
+    ]
+  },
+  "context": "At a networking reception, Saori meets Alex for the first time.",
+  "contextJp": "ネットワーキングのレセプションで、サオリは初めてアレックスに会います。",
+  "dialogue": [
+    {
+      "speaker": "Saori",
+      "lineEn": "Hi, I'm Saori. How's it going?",
+      "lineJp": "こんにちは、サオリです。調子はどうですか？"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Nice to meet you, Saori. I'm Alex. I love your jacket; it looks great.",
+      "lineJp": "はじめまして、サオリ。アレックスです。そのジャケット素敵ですね。とても似合っています。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Thank you! Your tie goes well with your shirt.",
+      "lineJp": "ありがとうございます！ネクタイがシャツによく合っていますね。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Thanks. Is this your first time at this event?",
+      "lineJp": "ありがとう。このイベントは初めてですか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes, it is. By the way, what do you do?",
+      "lineJp": "はい、そうです。ところで、お仕事は何をされていますか？"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "I'm a designer. How about you?",
+      "lineJp": "デザイナーです。あなたは？"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "small talk",
+      "back": "雑談（スモールトーク）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "褒め言葉を言う",
+      "back": "give a compliment",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "go well with",
+      "back": "〜によく合う",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "緊張をほぐす（場を和らげる）",
+      "back": "break the ice",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "polite",
+      "back": "丁寧な",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "調子はどうですか？",
+      "back": "How's it going?",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "そのネクタイ、シャツによく合いますね。",
+      "correct": "That tie goes well with your shirt.",
+      "wrong": [
+        "That tie go well with your shirt.",
+        "That tie goes good with your shirt."
+      ]
+    },
+    {
+      "sentenceJp": "素敵な時計ですね。どこで買いましたか？",
+      "correct": "I like your watch. Where did you buy it?",
+      "wrong": [
+        "I like you watch. Where did you bought it?",
+        "I am like your watch. Where do you buy it?"
+      ]
+    },
+    {
+      "sentenceJp": "ところで、お仕事は何をされていますか？",
+      "correct": "By the way, what do you do?",
+      "wrong": [
+        "By the way, what are you do?",
+        "By the way, what do you doing?"
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "That jacket ___ great on you.",
+      "blank": "looks",
+      "options": [
+        "looks",
+        "look",
+        "is looking",
+        "looking"
+      ]
+    },
+    {
+      "sentence": "Your shoes ___ really nice.",
+      "blank": "are",
+      "options": [
+        "are",
+        "is",
+        "be",
+        "were"
+      ]
+    },
+    {
+      "sentence": "These colors ___ well together.",
+      "blank": "go",
+      "options": [
+        "go",
+        "goes",
+        "are go",
+        "going"
+      ]
+    },
+    {
+      "sentence": "By the way, what do you ___?",
+      "blank": "do",
+      "options": [
+        "do",
+        "doing",
+        "does",
+        "did"
+      ]
+    }
+  ]
+}

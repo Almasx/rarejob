@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l4-c1-01",
+  "lessonNumber": 1,
+  "title": "Office Introductions",
+  "titleJp": "職場での自己紹介",
+  "goal": "I can listen to and understand office introductions.",
+  "goalJp": "職場での自己紹介を聞いて理解できるようになる。",
+  "lessonType": "LISTENING",
+  "vocabulary": [
+    {
+      "word": "introduce myself",
+      "wordJp": "自己紹介する",
+      "pronunciation": "ˌɪntrəˈduːs maɪˈsɛlf",
+      "exampleEn": "Let me introduce myself. I'm Kenji from the Sales Department.",
+      "exampleJp": "自己紹介させてください。営業部のケンジです。"
+    },
+    {
+      "word": "department",
+      "wordJp": "部署",
+      "pronunciation": "dɪˈpɑːrtmənt",
+      "exampleEn": "I work in the Marketing Department.",
+      "exampleJp": "私はマーケティング部署で働いています。"
+    },
+    {
+      "word": "coworker",
+      "wordJp": "同僚",
+      "pronunciation": "ˈkoʊˌwɜːrkər",
+      "exampleEn": "This is my coworker, Yuki.",
+      "exampleJp": "こちらは同僚のユキです。"
+    },
+    {
+      "word": "position",
+      "wordJp": "役職",
+      "pronunciation": "pəˈzɪʃən",
+      "exampleEn": "My position is project manager.",
+      "exampleJp": "私の役職はプロジェクトマネージャーです。"
+    },
+    {
+      "word": "in charge of",
+      "wordJp": "〜の担当で",
+      "pronunciation": "ɪn ˈtʃɑːrdʒ əv",
+      "exampleEn": "I'm in charge of new client support.",
+      "exampleJp": "新規顧客の対応を担当しています。"
+    },
+    {
+      "word": "join the company",
+      "wordJp": "入社する",
+      "pronunciation": "dʒɔɪn ðə ˈkʌmpəni",
+      "exampleEn": "I joined the company last April.",
+      "exampleJp": "私は昨年4月に入社しました。"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "To talk about your job and responsibilities, use: work in + field/department; work for + company; work as + job title; be in charge of + noun/gerund. Use the simple present for roles and duties.",
+    "ruleJp": "仕事や担当を表すときは次の表現を使います：work in + 分野/部署、work for + 会社、work as + 職種、be in charge of + 名詞/動名詞。役割や職務は現在形で表します。",
+    "examples": [
+      {
+        "en": "I work in the Sales Department.",
+        "jp": "私は営業部で働いています。"
+      },
+      {
+        "en": "I work for ABC Corporation as a designer.",
+        "jp": "私はABC社でデザイナーとして働いています。"
+      },
+      {
+        "en": "She's in charge of client support.",
+        "jp": "彼女は顧客サポートの担当です。"
+      }
+    ]
+  },
+  "context": "It's Saori's first day at a global company. In the office lobby, she's introduced to a new colleague, Alex.",
+  "contextJp": "サオリはグローバル企業での初出勤の日。オフィスのロビーで新しい同僚のアレックスを紹介されます。",
+  "dialogue": [
+    {
+      "speaker": "Alex",
+      "lineEn": "Hi, I'm Alex. Welcome to the Tokyo office.",
+      "lineJp": "こんにちは、アレックスです。東京オフィスへようこそ。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Nice to meet you, I'm Saori. I work in the Marketing Department.",
+      "lineJp": "はじめまして、サオリです。マーケティング部署で働いています。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Great. I'm in charge of the product launch team. What's your position?",
+      "lineJp": "いいですね。私は製品ローンチチームの担当です。あなたの役職は何ですか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "I'm a marketing analyst. I joined the company last month.",
+      "lineJp": "マーケティングアナリストです。先月入社しました。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Awesome. Let me introduce you to my coworker, Emma.",
+      "lineJp": "いいですね。同僚のエマを紹介します。"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Thank you! I'm happy to be here.",
+      "lineJp": "ありがとうございます！ここで働けて嬉しいです。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "introduce myself",
+      "back": "自己紹介する",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "部署",
+      "back": "department",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "coworker",
+      "back": "同僚",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "役職",
+      "back": "position",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "in charge of",
+      "back": "〜の担当で",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "入社する",
+      "back": "join the company",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "私は営業部で働いています。",
+      "correct": "I work in the Sales Department.",
+      "wrong": [
+        "I work at the Sales Department.",
+        "I am working in the Sales Department."
+      ]
+    },
+    {
+      "sentenceJp": "彼女は新規顧客の対応を担当しています。",
+      "correct": "She is in charge of new client support.",
+      "wrong": [
+        "She is in charge for new client support.",
+        "She in charge of new client support."
+      ]
+    },
+    {
+      "sentenceJp": "彼の役職はプロジェクトマネージャーです。",
+      "correct": "His position is project manager.",
+      "wrong": [
+        "His position is a project manager.",
+        "He is a project manager of sales department."
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "I ___ in the Marketing Department.",
+      "blank": "work",
+      "options": [
+        "work",
+        "works",
+        "am work",
+        "working"
+      ]
+    },
+    {
+      "sentence": "She is in charge ___ onboarding new clients.",
+      "blank": "of",
+      "options": [
+        "of",
+        "for",
+        "to",
+        "about"
+      ]
+    },
+    {
+      "sentence": "I work ___ sales.",
+      "blank": "in",
+      "options": [
+        "in",
+        "at",
+        "for",
+        "on"
+      ]
+    },
+    {
+      "sentence": "Let me ___ myself.",
+      "blank": "introduce",
+      "options": [
+        "introduce",
+        "introduction",
+        "introduced",
+        "introducing"
+      ]
+    }
+  ]
+}

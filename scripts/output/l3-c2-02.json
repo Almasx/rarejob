@@ -1,0 +1,205 @@
+{
+  "lessonKey": "l3-c2-02",
+  "lessonNumber": 2,
+  "title": "Taking the Train",
+  "titleJp": "電車に乗る",
+  "goal": "I can listen to and understand conversations and announcements about taking the train.",
+  "goalJp": "電車に乗るときの会話やアナウンスを聞いて理解できる。",
+  "lessonType": "LISTENING",
+  "vocabulary": [
+    {
+      "word": "platform",
+      "wordJp": "ホーム（プラットフォーム）",
+      "pronunciation": "ˈplæt.fɔːrm",
+      "exampleEn": "The train to Osaka leaves from platform 3.",
+      "exampleJp": "大阪行きの電車は3番ホームから出ます。"
+    },
+    {
+      "word": "ticket machine",
+      "wordJp": "券売機",
+      "pronunciation": "ˈtɪkɪt məˈʃiːn",
+      "exampleEn": "Buy a ticket at the ticket machine.",
+      "exampleJp": "券売機で切符を買ってください。"
+    },
+    {
+      "word": "transfer (verb)",
+      "wordJp": "乗り換える",
+      "pronunciation": "trænsˈfɝː",
+      "exampleEn": "You have to transfer at Shibuya.",
+      "exampleJp": "渋谷で乗り換えなければなりません。"
+    },
+    {
+      "word": "local train",
+      "wordJp": "各駅停車",
+      "pronunciation": "ˈloʊkəl treɪn",
+      "exampleEn": "Take the local train to the next station.",
+      "exampleJp": "次の駅まで各駅停車に乗ってください。"
+    },
+    {
+      "word": "express train",
+      "wordJp": "急行",
+      "pronunciation": "ɪkˈsprɛs treɪn",
+      "exampleEn": "The express train is faster but costs more.",
+      "exampleJp": "急行は早いですが、料金が高いです。"
+    },
+    {
+      "word": "on time",
+      "wordJp": "時間通りに",
+      "pronunciation": "ɑːn taɪm",
+      "exampleEn": "Is the 7:10 train on time today?",
+      "exampleJp": "今日の7時10分の電車は時間通りですか？"
+    }
+  ],
+  "grammarTip": {
+    "ruleEn": "Have to + base verb expresses necessity. Present tense: I/you/we/they have to; he/she/it has to. Negative: don't/doesn't have to means 'no need,' not 'must not.' Questions: Do/Does + subject + have to...?",
+    "ruleJp": "「have to + 動詞の原形」で「〜しなければならない」を表します。現在形では I/you/we/they は have to、he/she/it は has to。否定の don't/doesn't have to は「〜する必要はない」（禁止ではない）の意味。疑問文は Do/Does + 主語 + have to...? です。",
+    "examples": [
+      {
+        "en": "Do I have to transfer at Shibuya?",
+        "jp": "渋谷で乗り換えなければいけませんか？"
+      },
+      {
+        "en": "He has to buy a ticket.",
+        "jp": "彼は切符を買わなければなりません。"
+      },
+      {
+        "en": "You don't have to reserve a seat.",
+        "jp": "座席を予約する必要はありません。"
+      }
+    ]
+  },
+  "context": "Saori and Alex are at Shinjuku Station, trying to take a train to Kamakura.",
+  "contextJp": "サオリとアレックスは新宿駅で、鎌倉行きの電車に乗ろうとしています。",
+  "dialogue": [
+    {
+      "speaker": "Alex",
+      "lineEn": "Is this the right platform for Kamakura?",
+      "lineJp": "鎌倉行きはこのホームでいいですか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes, platform 7. But we have to buy tickets at the ticket machine.",
+      "lineJp": "はい、7番ホームです。でも券売機で切符を買わなければなりません。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Do we have to transfer on the way?",
+      "lineJp": "途中で乗り換えなければいけませんか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "No, just take the express train. It's on time today.",
+      "lineJp": "いいえ、急行に乗るだけです。今日は時間通りです。"
+    },
+    {
+      "speaker": "Alex",
+      "lineEn": "Great. If we miss it, can we take a local train?",
+      "lineJp": "よかった。乗り遅れたら、各駅停車に乗れますか？"
+    },
+    {
+      "speaker": "Saori",
+      "lineEn": "Yes, but the local train is slower.",
+      "lineJp": "はい、でも各駅停車は遅いです。"
+    }
+  ],
+  "flashcards": [
+    {
+      "front": "platform",
+      "back": "ホーム（プラットフォーム）",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "券売機",
+      "back": "ticket machine",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "transfer (v.)",
+      "back": "乗り換える",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "各駅停車",
+      "back": "local train",
+      "type": "jp-to-en"
+    },
+    {
+      "front": "express train",
+      "back": "急行",
+      "type": "en-to-jp"
+    },
+    {
+      "front": "時間通りに",
+      "back": "on time",
+      "type": "jp-to-en"
+    }
+  ],
+  "translate": [
+    {
+      "sentenceJp": "私は渋谷で乗り換えなければなりません。",
+      "correct": "I have to transfer at Shibuya.",
+      "wrong": [
+        "I has to transfer at Shibuya.",
+        "I must to transfer at Shibuya."
+      ]
+    },
+    {
+      "sentenceJp": "彼は切符を買う必要はありません。",
+      "correct": "He doesn't have to buy a ticket.",
+      "wrong": [
+        "He don't have to buy a ticket.",
+        "He doesn't has to buy a ticket."
+      ]
+    },
+    {
+      "sentenceJp": "急行は時間通りですか？",
+      "correct": "Is the express train on time?",
+      "wrong": [
+        "Does the express train is on time?",
+        "Is the express train in time?"
+      ]
+    }
+  ],
+  "fillBlank": [
+    {
+      "sentence": "He ___ to transfer at Tokyo Station.",
+      "blank": "has",
+      "options": [
+        "has",
+        "have",
+        "hasn't",
+        "is"
+      ]
+    },
+    {
+      "sentence": "Do we ___ to buy tickets here?",
+      "blank": "have",
+      "options": [
+        "have",
+        "has",
+        "are",
+        "having"
+      ]
+    },
+    {
+      "sentence": "The train leaves from ___ 4.",
+      "blank": "platform",
+      "options": [
+        "platform",
+        "station",
+        "line",
+        "home"
+      ]
+    },
+    {
+      "sentence": "The local train is slower, ___ it's cheaper.",
+      "blank": "but",
+      "options": [
+        "but",
+        "and",
+        "so",
+        "because"
+      ]
+    }
+  ]
+}
