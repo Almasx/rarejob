@@ -40,24 +40,35 @@ export const appendMessages = internalMutation({
   },
 })
 
+const rubricDimension = v.object({
+  level: v.number(),
+  comment: v.string(),
+  commentJp: v.string(),
+  examples: v.array(v.string()),
+})
+
 export const completeSession = internalMutation({
   args: {
     sessionId: v.id("roleplaySessions"),
     score: v.number(),
-    feedbackEn: v.string(),
-    feedbackJp: v.string(),
-    strengths: v.array(v.string()),
-    improvements: v.array(v.string()),
+    goalAchievement: v.object({
+      level: v.number(),
+      reason: v.string(),
+      reasonJp: v.string(),
+    }),
+    range: rubricDimension,
+    accuracy: rubricDimension,
+    fluency: rubricDimension,
   },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.sessionId, {
       status: "completed",
       completedAt: Date.now(),
       score: args.score,
-      feedbackEn: args.feedbackEn,
-      feedbackJp: args.feedbackJp,
-      strengths: args.strengths,
-      improvements: args.improvements,
+      goalAchievement: args.goalAchievement,
+      range: args.range,
+      accuracy: args.accuracy,
+      fluency: args.fluency,
     })
   },
 })

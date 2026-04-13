@@ -174,10 +174,43 @@ export default defineSchema({
     startedAt: v.number(),
     completedAt: v.optional(v.number()),
     score: v.optional(v.number()),
+    // Legacy fields — kept optional for sessions completed before 2026-04-13.
     feedbackEn: v.optional(v.string()),
     feedbackJp: v.optional(v.string()),
     strengths: v.optional(v.array(v.string())),
     improvements: v.optional(v.array(v.string())),
+    // RareJob rubric (Jitsuyo-Eikaiwa feedback page).
+    goalAchievement: v.optional(
+      v.object({
+        level: v.number(),
+        reason: v.string(),
+        reasonJp: v.string(),
+      })
+    ),
+    range: v.optional(
+      v.object({
+        level: v.number(),
+        comment: v.string(),
+        commentJp: v.string(),
+        examples: v.array(v.string()),
+      })
+    ),
+    accuracy: v.optional(
+      v.object({
+        level: v.number(),
+        comment: v.string(),
+        commentJp: v.string(),
+        examples: v.array(v.string()),
+      })
+    ),
+    fluency: v.optional(
+      v.object({
+        level: v.number(),
+        comment: v.string(),
+        commentJp: v.string(),
+        examples: v.array(v.string()),
+      })
+    ),
   })
     .index("by_userId", ["userId"])
     .index("by_userId_status", ["userId", "status"]),

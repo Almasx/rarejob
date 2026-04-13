@@ -12,6 +12,7 @@ import { authClient } from "@/lib/auth-client"
 import { useQuery } from "convex/react"
 import { AnimatePresence } from "framer-motion"
 import { BookOpen, LogOut, MessageCircle, RotateCcw, Sparkles, Users } from "lucide-react"
+import { BookRareJobCta } from "@/components/book-rarejob-cta"
 import { RoleplayScenarios } from "@/components/roleplay-scenarios"
 import { RoleplayChat } from "@/components/roleplay-chat"
 import { RoleplayResult } from "@/components/roleplay-result"
@@ -85,6 +86,8 @@ export default function Home() {
         </div>
 
         <StreakCalendar practiceHistory={dashboard.practiceHistory} streak={dashboard.streak} />
+
+        <BookRareJobCta />
 
         {/* Daily Review card */}
         <button

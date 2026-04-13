@@ -46,7 +46,7 @@ export function RoleplayScenarios({ onSelect, onClose }: RoleplayScenariosProps)
               onClick={() => onSelect(scenario)}
               className="card-raised p-5 text-left active:scale-[0.98] transition-transform"
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <h3 className="text-base font-semibold">{scenario.title}</h3>
                 <span className={cn(
                   "text-[11px] font-medium px-2 py-0.5 rounded-full capitalize",
@@ -54,8 +54,17 @@ export function RoleplayScenarios({ onSelect, onClose }: RoleplayScenariosProps)
                 )}>
                   {scenario.difficulty}
                 </span>
+                {scenario.curriculumSource && (
+                  <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-accent text-white">
+                    RareJob Lesson
+                  </span>
+                )}
               </div>
-              <p className="text-caption text-text-tertiary mb-3">{scenario.titleJp}</p>
+              <p className="text-caption text-text-tertiary mb-1">{scenario.titleJp}</p>
+              {scenario.curriculumSource && (
+                <p className="text-caption text-text-tertiary mb-3">{scenario.curriculumSource}</p>
+              )}
+              {!scenario.curriculumSource && <div className="mb-2" />}
               <p className="text-sm text-text-secondary mb-3">{scenario.goal}</p>
               <div className="flex gap-3 text-caption text-text-tertiary">
                 <span>You: <span className="text-text-secondary font-medium">{scenario.userRole}</span></span>

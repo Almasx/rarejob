@@ -1,5 +1,6 @@
 "use client"
 
+import { BookRareJobCta } from "@/components/book-rarejob-cta"
 import { Button } from "@/components/button"
 import { WeakPointRow } from "@/components/weak-point-row"
 import { api } from "@/convex/_generated/api"
@@ -107,6 +108,8 @@ export function SessionResult({ answers, lessonTitle, sessionId }: SessionResult
           </div>
         </div>
       )}
+
+      <BookRareJobCta variant="inline" />
 
       <Button className="w-full" onClick={() => router.push("/")}>
         Done

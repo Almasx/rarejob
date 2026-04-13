@@ -356,6 +356,7 @@ export const roleplayChat = action({
     userRole: v.string(),
     aiRole: v.string(),
     goal: v.string(),
+    tutorPrompt: v.optional(v.string()),
   },
   handler: async (ctx, args): Promise<{ text: string; isComplete: boolean }> => {
     const allMessages = [
@@ -363,19 +364,28 @@ export const roleplayChat = action({
       { role: "user" as const, content: args.userMessage },
     ]
 
+    const coachingBlock = `Coaching behavior (a good RareJob tutor does this):
+- Keep your turns short (1-2 sentences). The student should talk more than you.
+- After the student answers, react warmly in one natural phrase ("Oh nice.", "That sounds healthy.", "Really?"), then ask one open follow-up that invites more detail.
+- If the student gives a very short answer (under 5 words) or stalls, scaffold: offer a simpler version, a choice ("coffee or tea?"), or a sentence starter ("I usually...").
+- Never correct grammar mid-conversation. Model the correct form naturally in your own reply instead.
+- Speak at A2-B1 level — simple words, short sentences, but still natural.
+- Don't lecture, don't explain rules, don't break character.`
+
+    const curriculumBlock = args.tutorPrompt
+      ? `\n\nLesson content — follow this flow as the tutor:\n${args.tutorPrompt}`
+      : ""
+
     const systemPrompt = `You are playing the role of "${args.aiRole}" in a roleplay scenario for a Japanese student learning English.
 The student is playing "${args.userRole}".
 Scenario: ${args.scenarioId}
 Goal for the student: ${args.goal}
 
-Rules:
-- Stay in character at all times as ${args.aiRole}.
-- Speak naturally at A2-B1 English level (simple but realistic).
-- Keep responses short (1-3 sentences). Be conversational, not lecture-like.
-- If the student makes a grammar mistake, do NOT correct it during the roleplay. Stay in character.
-- Guide the conversation toward the goal naturally. Don't rush.
-- When the student has clearly achieved the goal (completed the task), append exactly [SCENARIO_COMPLETE] at the very end of your response. Only do this once, and only when the goal is genuinely accomplished.
-- Never mention that this is a roleplay or that you are an AI.`
+${coachingBlock}
+
+Completion:
+- When the student has clearly achieved the goal (for curriculum lessons: when the discussion flow has been substantially covered), append exactly [SCENARIO_COMPLETE] at the very end of your response. Only do this once.
+- Never mention that this is a roleplay or that you are an AI.${curriculumBlock}`
 
     const openai = getClient()
     const input = allMessages.map((m) => ({
@@ -405,6 +415,25 @@ Rules:
   },
 })
 
+type RubricDimension = {
+  level: number
+  comment: string
+  commentJp: string
+  examples: string[]
+}
+
+type RoleplayEvaluation = {
+  score: number
+  goalAchievement: {
+    level: number
+    reason: string
+    reasonJp: string
+  }
+  range: RubricDimension
+  accuracy: RubricDimension
+  fluency: RubricDimension
+}
+
 export const roleplayEvaluate = action({
   args: {
     sessionId: v.id("roleplaySessions"),
@@ -419,44 +448,68 @@ export const roleplayEvaluate = action({
       })
     ),
   },
-  handler: async (ctx, args): Promise<{
-    score: number
-    feedbackEn: string
-    feedbackJp: string
-    strengths: string[]
-    improvements: string[]
-  }> => {
+  handler: async (ctx, args): Promise<RoleplayEvaluation> => {
     const transcript = args.messages
       .map((m) => `${m.role === "user" ? args.userRole : args.aiRole}: ${m.content}`)
       .join("\n")
 
-    const prompt = `You are an English teacher evaluating a Japanese student's roleplay conversation.
+    const prompt = `You are a RareJob tutor evaluating a Japanese student's roleplay conversation using the official Jitsuyo-Eikaiwa feedback rubric.
 
 Scenario: ${args.scenarioId}
 Student role: ${args.userRole}
-AI role: ${args.aiRole}
-Goal: ${args.goal}
+Tutor role: ${args.aiRole}
+Lesson goal: ${args.goal}
 
 Transcript:
 ${transcript}
 
-Evaluate the student's English performance. Consider:
-- Grammar accuracy
-- Vocabulary range and appropriateness
-- Communication effectiveness (did they achieve the goal?)
-- Naturalness and politeness
-- Fluency (sentence structure variety)
+Evaluate using these four dimensions. Each dimension uses a 1-4 scale.
+
+LESSON GOAL ACHIEVEMENT — how well did the student complete the task (the goal)?
+  4 = Very Good — could complete the task with ease.
+  3 = Good — could complete the task with some clarifications.
+  2 = Fair — could complete the task with additional instructions.
+  1 = Poor — could somehow complete the task with difficulty.
+
+PERSONALIZED FEEDBACK (three dimensions, each 1-4):
+  RANGE (表現の幅) — vocabulary breadth: did they use varied, appropriate words?
+  ACCURACY (正確さ) — grammar correctness.
+  FLUENCY (流暢さ) — ability to speak smoothly without long hesitation or fragments.
+
+Rules for your output:
+- Every "reason", "comment", and "example" MUST reference a specific moment from the transcript (quote or closely paraphrase the student's actual words). Do not give generic advice.
+- Keep each comment to ONE short sentence. Keep each example to one short phrase.
+- examples arrays should contain AT MOST 2 items per dimension. Fewer is better. Only include examples that are actionable — a specific word/phrase the student used that could be improved, with the better version implicit.
+- If a dimension has nothing worth flagging, return an empty examples array.
+- Be encouraging. Anchor the whole evaluation to whether the task was done, not on grammar nitpicks.
+- Provide every comment and reason in both English and Japanese.
 
 Output ONLY valid JSON (no markdown):
 {
-  "score": <number 0-100>,
-  "feedbackEn": "<2-3 sentence summary in English>",
-  "feedbackJp": "<same feedback in Japanese>",
-  "strengths": ["<strength 1>", "<strength 2>", "<strength 3>"],
-  "improvements": ["<area 1>", "<area 2>", "<area 3>"]
-}
-
-Be encouraging. Strengths and improvements should be specific to what happened in the conversation, not generic. If the student achieved the goal, score should be at least 60.`
+  "goalAchievement": {
+    "level": 1|2|3|4,
+    "reason": "<one sentence in English referencing what happened in the conversation>",
+    "reasonJp": "<same reason in Japanese>"
+  },
+  "range": {
+    "level": 1|2|3|4,
+    "comment": "<one sentence in English>",
+    "commentJp": "<same in Japanese>",
+    "examples": ["<specific word or phrase from transcript>", ...]
+  },
+  "accuracy": {
+    "level": 1|2|3|4,
+    "comment": "<one sentence in English>",
+    "commentJp": "<same in Japanese>",
+    "examples": ["<specific mistake quoted from transcript>", ...]
+  },
+  "fluency": {
+    "level": 1|2|3|4,
+    "comment": "<one sentence in English>",
+    "commentJp": "<same in Japanese>",
+    "examples": ["<specific fragmented or hesitant turn>", ...]
+  }
+}`
 
     const openai = getClient()
     const response = await openai.responses.create({
@@ -466,21 +519,25 @@ Be encouraging. Strengths and improvements should be specific to what happened i
 
     const text = response.output_text.trim()
     const jsonStr = text.replace(/^```json?\s*/, "").replace(/\s*```$/, "")
-    const evaluation = JSON.parse(jsonStr) as {
-      score: number
-      feedbackEn: string
-      feedbackJp: string
-      strengths: string[]
-      improvements: string[]
-    }
+    const parsed = JSON.parse(jsonStr) as Omit<RoleplayEvaluation, "score">
+
+    const avgLevel =
+      (parsed.goalAchievement.level +
+        parsed.range.level +
+        parsed.accuracy.level +
+        parsed.fluency.level) /
+      4
+    const score = Math.round(avgLevel * 25)
+
+    const evaluation: RoleplayEvaluation = { ...parsed, score }
 
     await ctx.runMutation(internal.roleplay.completeSession, {
       sessionId: args.sessionId,
-      score: evaluation.score,
-      feedbackEn: evaluation.feedbackEn,
-      feedbackJp: evaluation.feedbackJp,
-      strengths: evaluation.strengths,
-      improvements: evaluation.improvements,
+      score,
+      goalAchievement: parsed.goalAchievement,
+      range: parsed.range,
+      accuracy: parsed.accuracy,
+      fluency: parsed.fluency,
     })
 
     return evaluation

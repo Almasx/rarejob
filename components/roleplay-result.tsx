@@ -1,5 +1,6 @@
 "use client"
 
+import { BookRareJobCta } from "@/components/book-rarejob-cta"
 import { Button } from "@/components/button"
 import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
@@ -7,7 +8,7 @@ import { cn } from "@/lib/utils"
 import type { Scenario } from "@/lib/scenarios"
 import { useAction } from "convex/react"
 import { motion } from "framer-motion"
-import { Check, ChevronUp, Loader2 } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import { useEffect, useState } from "react"
 
 type Message = {
@@ -15,12 +16,19 @@ type Message = {
   content: string
 }
 
+type Dimension = {
+  level: number
+  comment: string
+  commentJp: string
+  examples: string[]
+}
+
 type Evaluation = {
   score: number
-  feedbackEn: string
-  feedbackJp: string
-  strengths: string[]
-  improvements: string[]
+  goalAchievement: { level: number; reason: string; reasonJp: string }
+  range: Dimension
+  accuracy: Dimension
+  fluency: Dimension
 }
 
 type RoleplayResultProps = {
@@ -31,6 +39,78 @@ type RoleplayResultProps = {
 }
 
 const springGentle = { type: "spring" as const, duration: 0.4, bounce: 0 }
+
+const GOAL_LABELS: Record<number, { en: string; jp: string; detail: string }> = {
+  4: {
+    en: "Very Good",
+    jp: "とても良い",
+    detail: "Could complete the task with ease",
+  },
+  3: {
+    en: "Good",
+    jp: "良い",
+    detail: "Could complete the task with some clarifications",
+  },
+  2: {
+    en: "Fair",
+    jp: "普通",
+    detail: "Could complete the task with additional instructions",
+  },
+  1: {
+    en: "Poor",
+    jp: "要練習",
+    detail: "Could somehow complete the task with difficulty",
+  },
+}
+
+function LevelPips({ level }: { level: number }) {
+  return (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4].map((i) => (
+        <div
+          key={i}
+          className={cn(
+            "w-5 h-1.5 rounded-full",
+            i <= level ? "bg-accent" : "bg-border",
+          )}
+        />
+      ))}
+    </div>
+  )
+}
+
+function DimensionCard({
+  label,
+  labelJp,
+  dimension,
+}: {
+  label: string
+  labelJp: string
+  dimension: Dimension
+}) {
+  return (
+    <div className="card-raised p-5">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <p className="font-semibold text-base">{label}</p>
+          <p className="text-caption text-text-tertiary">{labelJp}</p>
+        </div>
+        <LevelPips level={dimension.level} />
+      </div>
+      <p className="text-sm text-text-primary leading-relaxed">{dimension.comment}</p>
+      <p className="text-sm text-text-secondary mt-1 leading-relaxed">{dimension.commentJp}</p>
+      {dimension.examples.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-border flex flex-col gap-1.5">
+          {dimension.examples.map((ex, i) => (
+            <p key={i} className="text-caption text-text-tertiary">
+              <span className="text-text-secondary">&ldquo;{ex}&rdquo;</span>
+            </p>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export function RoleplayResult({ sessionId, scenario, messages, onClose }: RoleplayResultProps) {
   const evaluate = useAction(api.openai.roleplayEvaluate)
@@ -62,7 +142,7 @@ export function RoleplayResult({ sessionId, scenario, messages, onClose }: Rolep
           <Loader2 size={32} className="text-accent animate-spin" />
           <div className="text-center">
             <p className="font-semibold text-base mb-1">Evaluating your conversation</p>
-            <p className="text-caption text-text-tertiary">Analyzing grammar, vocabulary, and communication...</p>
+            <p className="text-caption text-text-tertiary">Scoring goal achievement, range, accuracy, fluency...</p>
           </div>
         </div>
       </motion.div>
@@ -87,9 +167,12 @@ export function RoleplayResult({ sessionId, scenario, messages, onClose }: Rolep
     )
   }
 
-  const scoreColor =
-    evaluation!.score >= 80 ? "text-accent" :
-    evaluation!.score >= 50 ? "text-yellow-600" :
+  const goal = evaluation!.goalAchievement
+  const goalLabel = GOAL_LABELS[goal.level] ?? GOAL_LABELS[2]
+  const goalColor =
+    goal.level === 4 ? "text-accent" :
+    goal.level === 3 ? "text-accent" :
+    goal.level === 2 ? "text-yellow-600" :
     "text-red-500"
 
   return (
@@ -101,56 +184,40 @@ export function RoleplayResult({ sessionId, scenario, messages, onClose }: Rolep
     >
       <div className="mx-auto w-full max-w-[430px] flex flex-col h-dvh">
         <div className="flex-1 overflow-y-auto px-5 pt-14 pb-10 flex flex-col gap-3">
-          {/* Score card */}
+          {/* Lesson Goal Achievement — primary */}
           <div className="card-raised p-6 text-center">
-            <p className={cn("text-[48px] font-bold", scoreColor)}>
-              {evaluation!.score}
+            <p className="text-caption text-text-tertiary mb-2 uppercase tracking-wide">
+              Lesson Goal Achievement
             </p>
-            <p className="text-text-secondary text-base mt-1">
-              {evaluation!.score >= 80 ? "Great conversation!" :
-               evaluation!.score >= 50 ? "Good effort!" :
-               "Keep practicing!"}
+            <p className={cn("text-[40px] font-bold leading-none", goalColor)}>
+              {goal.level}
+              <span className="text-text-tertiary text-xl font-medium">/4</span>
             </p>
-            <p className="text-caption text-text-tertiary mt-1">{scenario.title}</p>
+            <p className="text-base font-semibold mt-2">{goalLabel.en}</p>
+            <p className="text-caption text-text-tertiary">{goalLabel.detail}</p>
+            <p className="text-caption text-text-tertiary mt-1">{goalLabel.jp}</p>
+            <div className="mt-4 pt-4 border-t border-border text-left">
+              <p className="text-sm text-text-primary leading-relaxed">{goal.reason}</p>
+              <p className="text-sm text-text-secondary mt-1 leading-relaxed">{goal.reasonJp}</p>
+            </div>
           </div>
 
-          {/* Feedback */}
-          <div className="card-raised p-5">
-            <p className="text-base text-text-primary leading-relaxed">{evaluation!.feedbackEn}</p>
-            <p className="text-sm text-text-secondary mt-2 leading-relaxed">{evaluation!.feedbackJp}</p>
-          </div>
+          <p className="text-caption text-text-tertiary uppercase tracking-wide px-1 mt-2">
+            Personalized Feedback
+          </p>
 
-          {/* Strengths */}
-          {evaluation!.strengths.length > 0 && (
-            <div className="card-raised p-5">
-              <h3 className="mb-3 text-base">Strengths</h3>
-              <div className="flex flex-col gap-2">
-                {evaluation!.strengths.map((s, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <Check size={16} className="text-accent shrink-0 mt-0.5" />
-                    <p className="text-sm text-text-secondary">{s}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <DimensionCard label="Range" labelJp="表現の幅" dimension={evaluation!.range} />
+          <DimensionCard label="Accuracy" labelJp="正確さ" dimension={evaluation!.accuracy} />
+          <DimensionCard label="Fluency" labelJp="流暢さ" dimension={evaluation!.fluency} />
 
-          {/* Improvements */}
-          {evaluation!.improvements.length > 0 && (
-            <div className="card-raised p-5">
-              <h3 className="mb-3 text-base">Areas to Improve</h3>
-              <div className="flex flex-col gap-2">
-                {evaluation!.improvements.map((s, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <ChevronUp size={16} className="text-yellow-600 shrink-0 mt-0.5" />
-                    <p className="text-sm text-text-secondary">{s}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <BookRareJobCta
+            variant="inline"
+            headline="Try this with a real tutor"
+            subtext="Book your next RareJob lesson to practice live"
+            className="mt-2"
+          />
 
-          <Button className="w-full" onClick={onClose}>
+          <Button className="w-full mt-1" onClick={onClose}>
             Done
           </Button>
         </div>

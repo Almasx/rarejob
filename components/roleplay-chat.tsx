@@ -66,6 +66,7 @@ export function RoleplayChat({ scenario, onComplete, onClose }: RoleplayChatProp
         userRole: scenario.userRole,
         aiRole: scenario.aiRole,
         goal: scenario.goal,
+        tutorPrompt: scenario.tutorPrompt,
       })
 
       const updatedMessages = [...newMessages, { role: "assistant" as const, content: result.text }]
